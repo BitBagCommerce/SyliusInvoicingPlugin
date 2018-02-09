@@ -1,4 +1,0 @@
-sylius:
-    form:
-        locale:
-            name: Name

@@ -1,7 +1,0 @@
-# This file is part of the Sylius package.
-# (c) Paweł Jędrzejewski
-
-parameters:
-    sylius.cache:
-        type: file_system
-    sylius.uploader.filesystem: sylius_image
