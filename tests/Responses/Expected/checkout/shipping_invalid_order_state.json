@@ -1,0 +1,25 @@
+{
+    "code": 400,
+    "message": "Validation Failed",
+    "errors": {
+        "children": {
+            "shipments": {
+                "children": [
+                    {
+                        "children": {
+                            "method": {
+                                "errors": [
+                                    "Please select shipping method."
+                                ],
+                                "children": [
+                                    {},
+                                    {}
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

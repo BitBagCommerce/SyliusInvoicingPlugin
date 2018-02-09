@@ -1,0 +1,16 @@
+{% from '@SyliusAdmin/Macro/translationForm.html.twig' import translationFormWithSlug %}
+
+<div class="ui segment">
+    {{ form_errors(form) }}
+    <div class="two fields">
+        {{ form_row(form.code) }}
+        {% if taxon.id != null %}
+            {{ form_row(form.parent) }}
+        {% else %}
+            {{ form_widget(form.parent, {'attr': {'style': 'display: none;'}}) }}
+        {% endif %}
+    </div>
+</div>
+{{ translationFormWithSlug(form.translations, '@SyliusAdmin/Taxon/_slugField.html.twig', taxon) }}
+
+{% include '@SyliusAdmin/Taxon/_media.html.twig' %}

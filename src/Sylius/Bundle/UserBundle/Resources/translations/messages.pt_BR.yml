@@ -1,0 +1,23 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    form:
+        user:
+            email: Email
+            enabled: Ativado
+            password:
+                label: Senha
+                confirmation: Verificação
+            remember_me: Lembrar
+            shipping_address: Endereço de entrega
+            username: Login
+        user_filter:
+            query: Pesquisar
+        user_change_password:
+            confirmation: Confirmação
+            current: Senha Atual
+            new: Nova senha
+        user_reset_password:
+            confirmation: Confirmação
+            new: Nova senha

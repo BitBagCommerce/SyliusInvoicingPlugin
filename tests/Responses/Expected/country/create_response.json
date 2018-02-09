@@ -1,0 +1,11 @@
+{
+    "id": @integer@,
+    "code": "BE",
+    "provinces": [],
+    "enabled": false,
+    "_links": {
+        "self": {
+            "href": @string@
+        }
+    }
+}

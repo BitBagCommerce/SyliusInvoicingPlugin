@@ -1,0 +1,11 @@
+{
+    "id": @integer@,
+    "code": "es_ES",
+    "createdAt": "@string@.isDateTime()",
+    "updatedAt": "@string@.isDateTime()",
+    "_links": {
+        "self": {
+            "href": "\/api\/v1\/locales\/es_ES"
+        }
+    }
+}

@@ -1,0 +1,7 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius_mailer:
+    sender:
+        name: Example.com
+        address: no-reply@example.com

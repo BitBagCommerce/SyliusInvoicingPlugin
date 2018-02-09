@@ -1,0 +1,41 @@
+{
+    "name": "Theme Mug",
+    "id": @integer@,
+    "code": "MUG_TH",
+    "attributes": [
+        {
+            "code": "mug_color",
+            "name": "Mug color",
+            "value": [
+                "green",
+                "yellow"
+            ],
+            "type": "select",
+            "id": @integer@,
+            "localeCode": "en_US"
+        }
+    ],
+    "options": [],
+    "associations": [],
+    "translations": {
+        "en_US": {
+            "locale": "en_US",
+            "id": @integer@,
+            "name": "Theme Mug",
+            "slug": "theme-mug"
+        }
+    },
+    "productTaxons": [],
+    "channels": [],
+    "reviews": [],
+    "averageRating": 0,
+    "images": [],
+    "_links": {
+        "self": {
+            "href": "\/api\/v1\/products\/MUG_TH"
+        },
+        "variants": {
+            "href": "\/api\/v1\/products\/MUG_TH\/variants\/"
+        }
+    }
+}

@@ -1,0 +1,45 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    form:
+        rule:
+            unit_count_configuration:
+                count: Count
+                equal: Equal to
+            type: Rule type
+        shipment:
+            state: State
+            states:
+                checkout:   Checkout
+                pending:    Pending
+                ready:      Ready
+                shipped:    Shipped
+                returned:   Returned
+                cancelled:  Cancelled
+            tracking_code: Tracking Code
+        shipping_calculator:
+            flat_rate_configuration:
+                label: Flat rate per shipment
+                amount: Amount
+            per_unit_rate_configuration:
+                label: Flat rate per unit
+                amount: Amount
+        shipping_category:
+            description: Description
+            name: Name
+        shipping_method:
+            calculator: Calculator
+            category: Category
+            category_requirement: Category requirement
+            channels: Channels
+            configuration: Configuration
+            description: Description
+            enabled: Enabled
+            match_all_category_requirement: All units has to match the method category
+            match_any_category_requirement: At least 1 unit has to match the method category
+            match_none_category_requirement: None of the units have to match the method category
+            name: Name
+            position: Position
+            tax_category: Tax category
+            translations: Translations

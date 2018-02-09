@@ -1,0 +1,116 @@
+@import "variables";
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
+#wrapper {
+  padding: 54px 0 0 0;
+}
+
+#content {
+  padding: 1em;
+}
+
+#sidebar {
+  font-size: 1.1em;
+  padding-bottom: 30px;
+}
+
+#logo {
+  margin-bottom: 1em;
+}
+
+body.pushable {
+  .pusher {
+    background-color: $color-background;
+  }
+}
+.ui.visible.left.sidebar~.fixed.menu,
+.ui.visible.left.sidebar~.pusher {
+  padding-right: 260px;
+}
+
+body.centered {
+  background-color: $color-background;
+
+  .grid {
+    height: 100%;
+  }
+
+  .column {
+    padding: 1em;
+    max-width: 450px;
+  }
+}
+
+select.ui.dropdown[multiple="multiple"] {
+  height: 100px;
+}
+
+.ui.segments {
+  border: 0;
+
+  .ui.segment {
+    border: 1px solid rgba(34, 36, 38, .15) !important;
+  }
+}
+
+.ui.breadcrumb {
+  margin-top: 1em;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+th {
+  a {
+    color: $color-link;
+  }
+  a:hover {
+    color: $color-link;
+  }
+  a:visited {
+    color: $color-link;
+  }
+}
+
+.ui.compact.segment .inline.fields {
+  margin: 0;
+}
+.ui.hidden.element {
+  display: none;
+}
+.ui.monster.header {
+  font-size: 3em;
+}
+.ui.styled.header {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: $color-header-background;
+  font-size: 0.9em;
+  padding-bottom: 7px;
+}
+
+.ui.input input[readonly] {
+  color: #aaa;
+}
+
+.field.loading.transition {
+  top: auto;
+  left: auto;
+}
+
+.ui.floated.dividing.empty {
+  top: 100%;
+  bottom: auto;
+  padding: 0;
+  margin: 0;
+}
+.ui.left.floated.dividing.empty ~ .ui.dropdown > .menu {
+  right: auto;
+  left: 0;
+}
+.ui.right.floated.dividing.empty ~ .ui.dropdown > .menu {
+  right: 0;
+  left: auto;
+}

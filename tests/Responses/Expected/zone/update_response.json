@@ -1,0 +1,18 @@
+{
+    "id": @integer@,
+    "code": "EU",
+    "name": "European Union +",
+    "type": "country",
+    "scope": "all",
+    "members": [
+        {
+            "id": @integer@,
+            "code": "PL"
+        }
+    ],
+    "_links": {
+        "self": {
+            "href": "\/api\/v1\/zones\/EU"
+        }
+    }
+}

@@ -1,0 +1,81 @@
+sylius_admin_product:
+    resource: |
+        alias: sylius.product
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        except: ['show', 'index']
+        redirect: update
+        grid: sylius_admin_product
+        permission: true
+        vars:
+            all:
+                subheader: sylius.ui.manage_your_product_catalog
+                templates:
+                    form: SyliusAdminBundle:Product:_form.html.twig
+            index:
+                icon: cube
+    type: sylius.resource
+
+sylius_admin_product_index:
+    path: /products/
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product:indexAction
+        _sylius:
+            section: admin
+            permission: true
+            grid: sylius_admin_product
+            template: SyliusAdminBundle:Product:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: cube
+
+sylius_admin_product_per_taxon_index:
+    path: /products/taxon/{taxonId}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.product:indexAction
+        _sylius:
+            section: admin
+            permission: true
+            grid: sylius_admin_product_from_taxon
+            template: SyliusAdminBundle:Product:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: cube
+
+sylius_admin_product_create:
+    path: /products/new
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.product:createAction
+        _sylius:
+            section: admin
+            permission: true
+            template: SyliusAdminBundle:Crud:create.html.twig
+            redirect: sylius_admin_product_update
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                templates:
+                    form: SyliusAdminBundle:Product:_form.html.twig
+                route:
+                    name: sylius_admin_product_create
+
+sylius_admin_product_create_simple:
+    path: /products/new/simple
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.product:createAction
+        _sylius:
+            section: admin
+            permission: true
+            factory:
+                method: createWithVariant
+            template: SyliusAdminBundle:Crud:create.html.twig
+            redirect: sylius_admin_product_update
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                templates:
+                    form: SyliusAdminBundle:Product:_form.html.twig
+                route:
+                    name: sylius_admin_product_create_simple

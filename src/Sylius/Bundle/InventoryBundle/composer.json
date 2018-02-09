@@ -1,0 +1,69 @@
+{
+    "name": "sylius/inventory-bundle",
+    "type": "symfony-bundle",
+    "description": "Flexible inventory management for Symfony2 applications.",
+    "keywords": ["shop", "ecommerce", "stock", "inventory", "sylius"],
+    "homepage": "http://sylius.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paweł Jędrzejewski",
+            "homepage": "http://pjedrzejewski.com"
+        },
+        {
+            "name": "Sylius project",
+            "homepage": "http://sylius.org"
+        },
+        {
+            "name": "Community contributions",
+            "homepage": "http://github.com/Sylius/Sylius/contributors"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+
+        "sylius/inventory": "^1.0",
+        "sylius/resource-bundle": "^1.0",
+        "symfony/framework-bundle": "^3.2",
+        "symfony/templating": "^3.2",
+        "symfony/validator": "^3.2"
+    },
+    "require-dev": {
+        "doctrine/orm": "~2.5.0",
+        "phpspec/phpspec": "^4.0",
+        "phpunit/phpunit": "^5.6",
+        "twig/twig": "^2.0",
+        "symfony/browser-kit": "^3.2",
+        "symfony/dependency-injection": "^3.2",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "polishsymfonycommunity/symfony-mocker-container": "^1.0"
+    },
+    "conflict": {
+        "twig/twig": "^1.0"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-4": { "Sylius\\Bundle\\InventoryBundle\\": "" }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Sylius\\Bundle\\InventoryBundle\\spec\\": "spec/",
+            "AppBundle\\": "test/src/AppBundle/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../../*/*"
+        }
+    ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}
