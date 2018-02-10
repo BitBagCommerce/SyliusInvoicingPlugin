@@ -1,0 +1,12 @@
+imports:
+    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/resources.yml" }
+
+parameters:
+    wkhtmltopdf_binary_path: /usr/local/bin/wkhtmltopdf
+    invoices_root_dir: "%kernel.root_dir%/../invoices"
+
+knp_snappy:
+    pdf:
+        enabled: true
+        binary: "%wkhtmltopdf_binary_path%"
+    process_timeout: 300

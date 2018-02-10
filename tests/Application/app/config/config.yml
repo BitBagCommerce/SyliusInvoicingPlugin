@@ -10,6 +10,8 @@ imports:
 
     - { resource: "../../../../vendor/sylius/sylius/app/config/security.yml" }
 
+    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/config.yml" }
+
 framework:
     translator: { fallbacks: ["%locale%", "en"] }
     secret: "%secret"

@@ -1,0 +1,7 @@
+sylius_resource:
+    resources:
+        bitbag_sylius_invoicing_plugin.invoice:
+            classes:
+                model: BitBag\SyliusInvoicingPlugin\Entity\Invoice
+                repository: BitBag\SyliusInvoicingPlugin\Repository\InvoiceRepository
+                form: BitBag\SyliusInvoicingPlugin\Form\Type\InvoiceType

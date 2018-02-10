@@ -1,0 +1,3 @@
+imports:
+    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/resources/invoice.yml" }
+    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/resources/company_data.yml" }

@@ -3,5 +3,5 @@ sylius:
 
 # Put your own routes here
 
-acme_sylius_example_shop:
-    resource: "@AcmeSyliusExamplePlugin/Resources/config/app/shop_routing.yml"
+bitbag_sylius_invoicing_plugin:
+    resource: "@BitBagSyliusInvoicingPlugin/Resources/config/routing.yml"

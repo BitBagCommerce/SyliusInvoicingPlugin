@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        bitbag_sylius_invoicing_plugin.company_data:
+            classes:
+                model: BitBag\SyliusInvoicingPlugin\Entity\CompanyData
+                form: BitBag\SyliusInvoicingPlugin\Form\Type\CompanyDataType

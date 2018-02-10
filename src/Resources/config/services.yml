@@ -1,0 +1,21 @@
+services:
+    bitbag_sylius_invoicing_plugin.controller.action.download_order_invoice:
+        class: BitBag\SyliusInvoicingPlugin\Controller\Action\DownloadOrderInvoice
+        arguments:
+            - "@bitbag_sylius_invoicing_plugin.resolver.invoice_file"
+            - "@sylius.repository.order"
+
+    bitbag_sylius_invoicing_plugin.resolver.invoice_file:
+        class: BitBag\SyliusInvoicingPlugin\Resolver\InvoiceFileResolver
+        arguments:
+            - "@bitbag_sylius_invoicing_plugin.file_generator.invoice_file"
+            - "@bitbag_sylius_invoicing_plugin.repository.invoice"
+            - "@bitbag_sylius_invoicing_plugin.manager.invoice"
+
+    bitbag_sylius_invoicing_plugin.file_generator.invoice_file:
+        class: BitBag\SyliusInvoicingPlugin\FileGenerator\PdfFileGenerator
+        arguments:
+            - "@knp_snappy.pdf"
+            - "@templating"
+            - "%invoices_root_dir%"
+            - "BitBagSyliusInvoicingPlugin:invoice.html.twig%"
