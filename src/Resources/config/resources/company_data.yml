@@ -3,4 +3,6 @@ sylius_resource:
         bitbag_sylius_invoicing_plugin.company_data:
             classes:
                 model: BitBag\SyliusInvoicingPlugin\Entity\CompanyData
+                interface: BitBag\SyliusInvoicingPlugin\Entity\CompanyDataInterface
+                repository: BitBag\SyliusInvoicingPlugin\Repository\CompanyDataRepository
                 form: BitBag\SyliusInvoicingPlugin\Form\Type\CompanyDataType

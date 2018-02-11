@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusInvoicingPlugin\Entity;
 
-interface CompanyDataInterface
+use Sylius\Component\Resource\Model\ResourceInterface;
+
+interface CompanyDataInterface extends ResourceInterface
 {
     /**
      * @return string|null
@@ -15,6 +17,16 @@ interface CompanyDataInterface
      * @param string|null $name
      */
     public function setName(?string $name): void;
+
+    /**
+     * @return null|string
+     */
+    public function getVatNumber(): ?string;
+
+    /**
+     * @param null|string $vatNumber
+     */
+    public function setVatNumber(?string $vatNumber): void;
 
     /**
      * @return string|null

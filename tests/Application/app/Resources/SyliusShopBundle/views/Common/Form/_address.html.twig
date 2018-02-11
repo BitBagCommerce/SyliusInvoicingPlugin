@@ -3,7 +3,7 @@
     {{ form_row(form.lastName) }}
 </div>
 {{ form_row(form.company) }}
-{% if isBillingAdress is defined and isBillingAddress == true %}
+{% if isBillingAdress is defined %}
     {{ form_row(form.invoice) }}
 {% endif %}
 {{ form_row(form.street) }}

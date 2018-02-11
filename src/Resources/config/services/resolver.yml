@@ -1,0 +1,13 @@
+services:
+    bitbag_sylius_invoicing_plugin.resolver.invoice_file:
+        class: BitBag\SyliusInvoicingPlugin\Resolver\InvoiceFileResolver
+        arguments:
+            - "@bitbag_sylius_invoicing_plugin.file_generator.invoice_file"
+            - "@bitbag_sylius_invoicing_plugin.repository.invoice"
+            - "@bitbag_sylius_invoicing_plugin.manager.invoice"
+            - "%kernel.environment%"
+
+    bitbag_sylius_invoicing_plugin.resolver.company_data:
+        class: BitBag\SyliusInvoicingPlugin\Resolver\CompanyDataResolver
+        arguments:
+            - "@bitbag_sylius_invoicing_plugin.repository.company_data"

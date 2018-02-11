@@ -12,20 +12,24 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusInvoicingPlugin\Entity;
 
-use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\OrderInterface;
 
-final class Invoice implements InvoiceInterface
+class Invoice implements InvoiceInterface
 {
+    /**
+     * @var int
+     */
+    protected $id;
+
     /**
      * @var string
      */
     protected $vatNumber;
 
     /**
-     * @var AddressInterface
+     * @var string
      */
-    protected $address;
+    protected $path;
 
     /**
      * @var OrderInterface
@@ -33,9 +37,12 @@ final class Invoice implements InvoiceInterface
     protected $order;
 
     /**
-     * @var string
+     * {@inheritdoc}
      */
-    protected $path;
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     /**
      * {@inheritdoc}
@@ -56,17 +63,17 @@ final class Invoice implements InvoiceInterface
     /**
      * {@inheritdoc}
      */
-    public function getAddress(): AddressInterface
+    public function getPath(): ?string
     {
-        return $this->address;
+        return $this->path;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setAddress(AddressInterface $address): void
+    public function setPath(?string $path): void
     {
-        $this->address = $address;
+        $this->path = $path;
     }
 
     /**
@@ -83,21 +90,5 @@ final class Invoice implements InvoiceInterface
     public function setOrder(?OrderInterface $order): void
     {
         $this->order = $order;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPath(): ?string
-    {
-        return $this->path;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setPath(?string $path): void
-    {
-        $this->path = $path;
     }
 }

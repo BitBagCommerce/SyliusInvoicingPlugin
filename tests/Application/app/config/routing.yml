@@ -5,3 +5,4 @@ sylius:
 
 bitbag_sylius_invoicing_plugin:
     resource: "@BitBagSyliusInvoicingPlugin/Resources/config/routing.yml"
+    prefix: /admin

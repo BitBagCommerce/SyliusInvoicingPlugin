@@ -1,0 +1,34 @@
+bitbag_sylius_invoicing_plugin:
+    ui:
+        download_invoice: Download invoice
+        company_name: Company
+        issued_at: Issued at
+        transaction_date: Transaction date
+        seller: Seller
+        customer: Customer
+        invoice_for_order: Invoice for order
+        subtotal: Subtotal
+        discounted_price: Discounted
+        total: Total
+        vat: VAT
+        seller_signature: Seller signature
+        customer_signature: Customer signature
+        issued_by: Issued by
+        buyer_person: Odebrał(a)
+        company_datas: Company invoice data
+        manage_company_invoice_data: Manage company invoice data
+        new_company_data: Add new company invoice data
+        edit_company_data: Edit company invoice data
+        invoice_data: Company invoice data
+        street: Street
+        city: City
+        postcode: Postcode
+        vat_number: Vat number
+        table:
+            no: No.
+            item: Item
+            quantity: Quantity
+            discounted_unit_price: Discounted price
+            subtotal: Subtotal
+            tax_total: Tax total
+            total: Total

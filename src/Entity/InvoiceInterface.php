@@ -12,10 +12,10 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusInvoicingPlugin\Entity;
 
-use Sylius\Component\Core\Model\AddressInterface;
 use Sylius\Component\Core\Model\OrderInterface;
+use Sylius\Component\Resource\Model\ResourceInterface;
 
-interface InvoiceInterface
+interface InvoiceInterface extends ResourceInterface
 {
     /**
      * @return string|null
@@ -26,16 +26,6 @@ interface InvoiceInterface
      * @param string|null $vatNumber
      */
     public function setVatNumber(?string $vatNumber): void;
-
-    /**
-     * @return AddressInterface
-     */
-    public function getAddress(): AddressInterface;
-
-    /**
-     * @param AddressInterface $address
-     */
-    public function setAddress(AddressInterface $address): void;
 
     /**
      * @return OrderInterface

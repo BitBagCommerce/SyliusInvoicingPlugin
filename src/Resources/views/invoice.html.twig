@@ -1,0 +1,301 @@
+{% import "@SyliusShop/Common/Macro/money.html.twig" as money %}
+
+{% set order = invoice.order %}
+{% set billingAddress = invoice.order.billingAddress %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    body {
+        margin: 25px;
+        padding: 0;
+        color: black;
+        background: #FFFFFF;
+        font-size: 12px;
+        font-family: Open Sans, sans-serif;
+    }
+
+    div {
+        box-sizing: border-box;
+    }
+
+    .clearfix:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .col-md-12 {
+        width: 100%;
+        float: left;
+    }
+
+    .col-md-6 {
+        width: 50%;
+        float: left;
+        position: relative;
+        min-height: 1px;
+    }
+
+    .col-md-12:after, .col-md-6:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        background-color: white;
+    }
+
+    .box {
+        border-top: 2px black solid;
+    }
+
+    .heading-box {
+        text-align: center;
+        padding: 5px;
+        background-color: #e0e0e0;
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .content-box {
+        padding: 5px;
+        text-align: center;
+    }
+
+    div > .box:last-of-type {
+        border-bottom: 1px black solid;
+    }
+
+    #main-information {
+        margin-bottom: 10px;
+        padding-left: 40px;
+    }
+
+    #buyer-seller-information .box .content-box {
+        text-align: left;
+    }
+
+    .padding-left-10px {
+        padding-left: 10px !important;
+    }
+
+    .padding-right-10px {
+        padding-right: 10px !important;
+    }
+
+    #invoice-number h1 {
+        font-size: 21px;
+        text-align: center;
+    }
+
+    #invoice-items {
+        margin-bottom: 10px;
+    }
+
+    tr.noBorder td {
+        border: 0;
+    }
+
+    table {
+        border-collapse: collapse;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+        padding: 4px;
+    }
+
+    table thead tr {
+        background-color: #e0e0e0;
+        color: black;
+    }
+
+    .text-align-right {
+        text-align: right;
+    }
+
+    #invoice-summary table {
+        width: 45%;
+        float: right;
+        margin-bottom: 10px;
+    }
+
+    #invoice-payment-information .heading-box, #additional-fields .heading-box {
+        text-align: left;
+        padding-left: 20px;
+    }
+
+    #additional-fields .content-box {
+        text-align: left;
+    }
+
+    .pull-left {
+        float: left !important;
+    }
+
+    .pull-right {
+        float: right !important;
+    }
+
+    #exhibitor-recipient-invoice .box {
+        width: 90%;
+        min-height: 85px;
+    }
+
+    #company-logo img {
+        max-width: 100%;
+        max-height: 300px;
+    }
+
+    #company-logo img {
+        margin-bottom: 10px;
+    }
+
+    #exhibitor-recipient-invoice small {
+        width: 90%;
+        display: block;
+        text-align: center;
+    }
+</style>
+<body>
+<div class="container clearfix">
+    <div class="col-md-12">
+        <div class="col-md-6 clearfix" id="company-logo"></div>
+        <div id="main-information" class="col-md-6">
+            <div class="box">
+                <div class="heading-box">
+                    {{ 'bitbag_sylius_invoicing_plugin.ui.issued_at'|trans }}
+                </div>
+                <div class="content-box">
+                    {{ 'now'|date('d-m-Y') }}
+                </div>
+            </div>
+            <div class="box">
+                <div class="heading-box">
+                    {{ 'bitbag_sylius_invoicing_plugin.ui.transaction_date'|trans }}
+                </div>
+                <div class="content-box">
+                    {{ order.createdAt|date('d-m-Y') }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div id="buyer-seller-information">
+            <div class="col-md-6 padding-right-10px">
+                <div class="box">
+                    <div class="heading-box">
+                        {{ 'bitbag_sylius_invoicing_plugin.ui.seller'|trans }}:
+                    </div>
+                    <div class="content-box">
+                        {{ companyData.name }}<br/><br/>
+                        {{ companyData.street }}<br/>
+                        {{ companyData.postcode }} {{ companyData.city }}<br/>
+                        {{ 'bitbag_sylius_invoicing_plugin.ui.vat'|trans }}: {{ companyData.vatNumber }}<br/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 padding-left-10px">
+                <div class="box">
+                    <div class="heading-box">
+                        {{ 'bitbag_sylius_invoicing_plugin.ui.customer'|trans }}:
+                    </div>
+                    <div class="content-box">
+                        {{ billingAddress.company }}<br/><br/>
+                        {{ billingAddress.street }}<br/>
+                        {{ billingAddress.postcode }} {{ billingAddress.city }}<br/>
+                        {{ billingAddress.country }}<br/>
+                        {{ 'bitbag_sylius_invoicing_plugin.ui.vat'|trans }}: {{ invoice.vatNumber }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div id="invoice-number" class="col-md-12">
+            <h1>
+                {{ 'bitbag_sylius_invoicing_plugin.ui.invoice_for_order'|trans }} {{ order.number }}
+            </h1>
+        </div>
+        <div class="col-md-12" id="invoice-items">
+            <table>
+                <thead>
+                <tr>
+                    <th>{{ 'bitbag_sylius_invoicing_plugin.ui.table.no'|trans }}</th>
+                    <th>{{ 'bitbag_sylius_invoicing_plugin.ui.table.item'|trans }}</th>
+                    <th>{{ 'bitbag_sylius_invoicing_plugin.ui.table.quantity'|trans }}</th>
+                    <th>{{ 'bitbag_sylius_invoicing_plugin.ui.table.subtotal'|trans }}</th>
+                    <th>{{ 'bitbag_sylius_invoicing_plugin.ui.table.discounted_unit_price'|trans }}</th>
+                    <th>{{ 'bitbag_sylius_invoicing_plugin.ui.table.tax_total'|trans }}</th>
+                    <th>{{ 'bitbag_sylius_invoicing_plugin.ui.table.total'|trans }}</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in order.items %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ item.getVariant.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ money.convertAndFormat(item.subtotal) }}</td>
+                        <td>{{ money.convertAndFormat(item.discountedUnitPrice) }}</td>
+                        <td>{{ money.convertAndFormat(item.taxTotal) }}</td>
+                        <td>{{ money.convertAndFormat(item.subtotal + item.taxTotal) }}</td>
+                    </tr>
+                {% endfor %}
+
+                <tr>
+                    <td colspan="4" class="text-align-right padding-right-10px">
+                        <b>{{ 'bitbag_sylius_invoicing_plugin.ui.total'|trans }}:</b>
+                    </td>
+                    <td><b>{{ money.convertAndFormat(order.total - order.taxTotal) }}</b></td>
+                    <td><b>{{ money.convertAndFormat(order.taxTotal) }}</b></td>
+                    <td><b>{{ money.convertAndFormat(order.total) }}</b></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div id="exhibitor-recipient-invoice">
+            <div class="col-md-6">
+                <div class="box pull-left">
+                    <div class="heading-box">
+                        {{ 'bitbag_sylius_invoicing_plugin.ui.issued_by'|trans }}
+                    </div>
+                    <div class="content-box">
+                        {{ companyData.seller }}
+                    </div>
+                </div>
+                <small class="pull-left">
+                    {{ 'bitbag_sylius_invoicing_plugin.ui.seller_signature'|trans }}
+                </small>
+            </div>
+            <div class="col-md-6">
+                <div class="box pull-right">
+                    <div class="heading-box">
+                        {{ 'bitbag_sylius_invoicing_plugin.ui.customer'|trans }}
+                    </div>
+                    <div class="content-box">
+                        {{ billingAddress.firstName }} {{ billingAddress.lastName }}
+                    </div>
+                </div>
+                <small class="pull-right">
+                    {{ 'bitbag_sylius_invoicing_plugin.ui.customer_signature'|trans }}
+                </small>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

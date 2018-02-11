@@ -1,0 +1,28 @@
+BitBag\SyliusInvoicingPlugin\Entity\CompanyData:
+    type: mappedSuperclass
+    table: bitbag_invoicing_company_data
+    id:
+          id:
+              type: integer
+              id: true
+              generator:
+                  strategy: AUTO
+    fields:
+        name:
+            column: name
+            type: string
+        street:
+            column: street
+            type: string
+        city:
+            column: city
+            type: string
+        postcode:
+            column: postcode
+            type: string
+        vatNumber:
+            column: vat_number
+            type: string
+        seller:
+            column: seller
+            type: string

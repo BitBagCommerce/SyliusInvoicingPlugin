@@ -25,22 +25,22 @@ final class CompanyDataType extends AbstractResourceType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'bitbag.invoicing.company_name',
+                'label' => 'bitbag_sylius_invoicing_plugin.ui.company_name',
             ])
             ->add('street', TextType::class, [
-                'label' => 'bitbag.invoicing.street',
+                'label' => 'bitbag_sylius_invoicing_plugin.ui.street',
             ])
             ->add('city', TextType::class, [
-                'label' => 'bitbag.invoicing.city',
+                'label' => 'bitbag_sylius_invoicing_plugin.ui.city',
             ])
             ->add('postcode', TextType::class, [
-                'label' => 'bitbag.invoicing.postcode',
+                'label' => 'bitbag_sylius_invoicing_plugin.ui.postcode',
             ])
             ->add('vatNumber', TextType::class, [
-                'label' => 'bitbag.invoicing.vat_number',
+                'label' => 'bitbag_sylius_invoicing_plugin.ui.vat_number',
             ])
             ->add('seller', TextType::class, [
-                'label' => 'bitbag.invoicing.seller',
+                'label' => 'bitbag_sylius_invoicing_plugin.ui.seller',
             ])
         ;
     }

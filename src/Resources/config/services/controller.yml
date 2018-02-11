@@ -1,0 +1,12 @@
+services:
+    bitbag_sylius_invoicing_plugin.controller.action.download_order_invoice:
+        class: BitBag\SyliusInvoicingPlugin\Controller\Action\DownloadOrderInvoice
+        arguments:
+            - "@bitbag_sylius_invoicing_plugin.repository.invoice"
+            - "@bitbag_sylius_invoicing_plugin.resolver.invoice_file"
+
+#    bitbag_sylius_invoicing_plugin.controller.action.send_order_invoice:
+#        class: BitBag\SyliusInvoicingPlugin\Controller\Action\SendOrderInvoice
+#        arguments:
+#            - "@bitbag_sylius_invoicing_plugin.repository.invoice"
+#            - "@bitbag_sylius_invoicing_plugin.resolver.invoice_file"

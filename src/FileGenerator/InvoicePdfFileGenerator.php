@@ -12,11 +12,12 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusInvoicingPlugin\FileGenerator;
 
+use BitBag\SyliusInvoicingPlugin\Entity\InvoiceInterface;
+use BitBag\SyliusInvoicingPlugin\Resolver\CompanyDataResolverInterface;
 use Knp\Snappy\GeneratorInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Templating\EngineInterface;
 
-final class PdfFileGenerator implements FileGeneratorInterface
+final class InvoicePdfFileGenerator implements FileGeneratorInterface
 {
     /**
      * @var GeneratorInterface
@@ -29,42 +30,47 @@ final class PdfFileGenerator implements FileGeneratorInterface
     private $templatingEngine;
 
     /**
+     * @var CompanyDataResolverInterface
+     */
+    private $companyDataResolver;
+
+    /**
      * @var string
      */
     private $filesPath;
 
     /**
-     * @var string
-     */
-    private $templatePath;
-
-    /**
      * @param GeneratorInterface $pdfFileGenerator
      * @param EngineInterface $templatingEngine
+     * @param CompanyDataResolverInterface $companyDataResolver
      * @param string $filesPath
-     * @param string $templatePath
      */
     public function __construct(
         GeneratorInterface $pdfFileGenerator,
         EngineInterface $templatingEngine,
-        string $filesPath,
-        string $templatePath
+        CompanyDataResolverInterface $companyDataResolver,
+        string $filesPath
     ) {
         $this->pdfFileGenerator = $pdfFileGenerator;
         $this->templatingEngine = $templatingEngine;
+        $this->companyDataResolver = $companyDataResolver;
         $this->filesPath = $filesPath;
-        $this->templatePath = $templatePath;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function generateFile(ResourceInterface $resource): string
+    public function generateFile(InvoiceInterface $invoice): string
     {
-        $html = $this->templatingEngine->render($this->templatePath, ['resource' => $resource]);
-        $path = $this->filesPath . '/' . (string) $resource->getId() . bin2hex(random_bytes(6)) . '.pdf';
+        $html = $this->templatingEngine->render(
+            "BitBagSyliusInvoicingPlugin::invoice.html.twig", [
+                'invoice' => $invoice,
+                'companyData' => $this->companyDataResolver->resolveCompanyData(),
+            ]
+        );
+        $path = $this->filesPath . '/' . (string) $invoice->getId() . bin2hex(random_bytes(6)) . '.pdf';
 
-        $this->pdfFileGenerator->getOutputFromHtml($html, $path);
+        $this->pdfFileGenerator->generateFromHtml($html, $path);
 
         return $path;
     }

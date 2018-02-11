@@ -13,8 +13,11 @@ final class InvoiceType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $builder->add('vatNumber', TextType::class. ['label' => 'bitbag.invoicing.vat_number']);
+        $builder->add('vatNumber', TextType::class, [
+            'label' => 'bitbag_sylius_invoicing_plugin.ui.vat_number',
+            'required' => false,
+        ]);
     }
 }

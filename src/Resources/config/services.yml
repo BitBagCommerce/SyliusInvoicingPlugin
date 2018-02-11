@@ -1,21 +1,19 @@
+imports:
+    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/services/form.yml" }
+    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/services/controller.yml" }
+    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/services/menu.yml" }
+    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/services/resolver.yml" }
+
 services:
-    bitbag_sylius_invoicing_plugin.controller.action.download_order_invoice:
-        class: BitBag\SyliusInvoicingPlugin\Controller\Action\DownloadOrderInvoice
-        arguments:
-            - "@bitbag_sylius_invoicing_plugin.resolver.invoice_file"
-            - "@sylius.repository.order"
-
-    bitbag_sylius_invoicing_plugin.resolver.invoice_file:
-        class: BitBag\SyliusInvoicingPlugin\Resolver\InvoiceFileResolver
-        arguments:
-            - "@bitbag_sylius_invoicing_plugin.file_generator.invoice_file"
-            - "@bitbag_sylius_invoicing_plugin.repository.invoice"
-            - "@bitbag_sylius_invoicing_plugin.manager.invoice"
-
     bitbag_sylius_invoicing_plugin.file_generator.invoice_file:
-        class: BitBag\SyliusInvoicingPlugin\FileGenerator\PdfFileGenerator
+        class: BitBag\SyliusInvoicingPlugin\FileGenerator\InvoicePdfFileGenerator
         arguments:
             - "@knp_snappy.pdf"
             - "@templating"
+            - "@bitbag_sylius_invoicing_plugin.resolver.company_data"
             - "%invoices_root_dir%"
-            - "BitBagSyliusInvoicingPlugin:invoice.html.twig%"
+
+    bitbag_sylius_invoicing_plugin.validator.vat_number:
+        class: BitBag\SyliusInvoicingPlugin\Validator\Constraints\VatNumberValidator
+        tags:
+            - { name: validator.constraint_validator, alias: bitbag_sylius_invoicing_plugin_vat_number_validator }

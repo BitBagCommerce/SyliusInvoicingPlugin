@@ -1,0 +1,13 @@
+services:
+    bitbag_sylius_invoicing_plugin.event_listener.order_show:
+        class: BitBag\SyliusInvoicingPlugin\Menu\DownloadInvoiceMenuBuilder
+        arguments:
+            - "@bitbag_sylius_invoicing_plugin.repository.invoice"
+            - "@bitbag_sylius_invoicing_plugin.resolver.company_data"
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.order.show, method: addItem }
+
+    bitbag_sylius_invoicing_plugin.event_listener.company_data:
+        class: BitBag\SyliusInvoicingPlugin\Menu\CompanyDataMenuBuilder
+        tags:
+            - { name: kernel.event_listener, event: sylius.menu.admin.main, method: addItem }

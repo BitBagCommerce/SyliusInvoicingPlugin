@@ -1,0 +1,5 @@
+BitBag\SyliusInvoicePlugin\Entity\Invoice:
+    properties:
+        vatNumber:
+            - VatNumber:
+                groups: ['sylius']

@@ -1,0 +1,24 @@
+services:
+    bitbag_sylius_invoicing_plugin.form.type.company_data:
+        class: BitBag\SyliusInvoicingPlugin\Form\Type\CompanyDataType
+        arguments:
+            - "%bitbag_sylius_invoicing_plugin.model.company_data.class%"
+            - ['bitbag_invoicing']
+        tags:
+            - { name: form.type }
+
+    bitbag_sylius_invoicing_plugin.form.type.invoice:
+        class: BitBag\SyliusInvoicingPlugin\Form\Type\InvoiceType
+        arguments:
+            - "%bitbag_sylius_invoicing_plugin.model.invoice.class%"
+            - ['bitbag_invoicing']
+        tags:
+            - { name: form.type }
+
+    bitbag_sylius_invoicing_plugin.form.extension.address:
+        class: BitBag\SyliusInvoicingPlugin\Form\Extension\AddressTypeExtension
+        arguments:
+            - "@bitbag_sylius_invoicing_plugin.repository.invoice"
+            - "@bitbag_sylius_invoicing_plugin.manager.invoice"
+        tags:
+            - { name: form.type_extension, extended_type: Sylius\Bundle\AddressingBundle\Form\Type\AddressType }

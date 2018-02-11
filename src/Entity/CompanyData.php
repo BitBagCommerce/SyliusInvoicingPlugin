@@ -12,12 +12,17 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusInvoicingPlugin\Entity;
 
-final class CompanyData implements CompanyDataInterface
+class CompanyData implements CompanyDataInterface
 {
     /**
      * @var int
      */
     protected $id;
+
+    /**
+     * @var string
+     */
+    protected $name;
 
     /**
      * @var string
@@ -38,11 +43,6 @@ final class CompanyData implements CompanyDataInterface
      * @var string
      */
     protected $postcode;
-
-    /**
-     * @var string
-     */
-    protected $name;
 
     /**
      * @var string
@@ -71,6 +71,22 @@ final class CompanyData implements CompanyDataInterface
     public function setVatNumber(?string $vatNumber): void
     {
         $this->vatNumber = $vatNumber;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
     }
 
     /**
@@ -124,29 +140,13 @@ final class CompanyData implements CompanyDataInterface
     /**
      * {@inheritdoc}
      */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setName(?string $name): void
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return string|null
-     */
     public function getSeller(): ?string
     {
         return $this->seller;
     }
 
     /**
-     * @param string|null $seller
+     * {@inheritdoc}
      */
     public function setSeller(?string $seller): void
     {

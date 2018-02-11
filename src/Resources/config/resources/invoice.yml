@@ -3,5 +3,6 @@ sylius_resource:
         bitbag_sylius_invoicing_plugin.invoice:
             classes:
                 model: BitBag\SyliusInvoicingPlugin\Entity\Invoice
+                interface: BitBag\SyliusInvoicingPlugin\Entity\InvoiceInterface
                 repository: BitBag\SyliusInvoicingPlugin\Repository\InvoiceRepository
                 form: BitBag\SyliusInvoicingPlugin\Form\Type\InvoiceType

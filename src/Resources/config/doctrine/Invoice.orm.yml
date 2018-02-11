@@ -1,0 +1,22 @@
+BitBag\SyliusInvoicingPlugin\Entity\Invoice:
+    type: mappedSuperclass
+    table: bitbag_invoicing_invoice
+    id:
+          id:
+              type: integer
+              id: true
+              generator:
+                  strategy: AUTO
+    fields:
+        vatNumber:
+            column: vat_number
+            type: string
+            nullable: true
+        path:
+            column: path
+            type: string
+            nullable: true
+    oneToOne:
+        order:
+            targetEntity: Sylius\Component\Order\Model\OrderInterface
+            cascade: ["ALL"]

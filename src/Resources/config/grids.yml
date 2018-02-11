@@ -1,0 +1,26 @@
+sylius_grid:
+    grids:
+        bitbag_sylius_invoicing_plugin_company_data:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%bitbag_sylius_invoicing_plugin.model.company_data.class%"
+                    repository:
+                        method: createListQueryBuilder
+            fields:
+                name:
+                    type: string
+                    label: bitbag_sylius_invoicing_plugin.ui.company_name
+                    sortable: ~
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
+                bulk:
+                    delete:
+                        type: delete

@@ -12,15 +12,19 @@ declare(strict_types=1);
 
 namespace BitBag\SyliusInvoicingPlugin\Repository;
 
-use BitBag\SyliusInvoicingPlugin\Entity\InvoiceInterface;
+use BitBag\SyliusInvoicingPlugin\Entity\CompanyDataInterface;
+use Doctrine\ORM\QueryBuilder;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
-interface InvoiceRepositoryInterface extends RepositoryInterface
+interface CompanyDataRepositoryInterface extends RepositoryInterface
 {
     /**
-     * @param int|null $orderId
-     *
-     * @return InvoiceInterface|null
+     * @return QueryBuilder
      */
-    public function findByOrderId(?int $orderId): ?InvoiceInterface;
+    public function createListQueryBuilder(): QueryBuilder;
+
+    /**
+     * @return CompanyDataInterface|null
+     */
+    public function findCompanyData(): ?CompanyDataInterface;
 }

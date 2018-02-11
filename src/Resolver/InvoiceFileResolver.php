@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file has been created by the developers from BitBag.
+ * This file has been created by developers from BitBag.
  * Feel free to contact us once you face any issues or want to start
  * another great project.
  * You can find more information about us on https://bitbag.shop and write us
@@ -22,7 +22,7 @@ final class InvoiceFileResolver implements InvoiceFileResolverInterface
     /**
      * @var FileGeneratorInterface
      */
-    private $invoicePdfFileGenerator;
+    private $invoiceFileGenerator;
 
     /**
      * @var InvoiceRepositoryInterface
@@ -35,19 +35,27 @@ final class InvoiceFileResolver implements InvoiceFileResolverInterface
     private $invoiceEntityManager;
 
     /**
-     * @param FileGeneratorInterface $invoicePdfFileGenerator
+     * @var string
+     */
+    private $environment;
+
+    /**
+     * @param FileGeneratorInterface $invoiceFileGenerator
      * @param InvoiceRepositoryInterface $invoiceRepository
      * @param EntityManagerInterface $invoiceEntityManager
+     * @param string $environment
      */
     public function __construct(
-        FileGeneratorInterface $invoicePdfFileGenerator,
+        FileGeneratorInterface $invoiceFileGenerator,
         InvoiceRepositoryInterface $invoiceRepository,
-        EntityManagerInterface $invoiceEntityManager
+        EntityManagerInterface $invoiceEntityManager,
+        string $environment
     )
     {
-        $this->invoicePdfFileGenerator = $invoicePdfFileGenerator;
+        $this->invoiceFileGenerator = $invoiceFileGenerator;
         $this->invoiceRepository = $invoiceRepository;
         $this->invoiceEntityManager = $invoiceEntityManager;
+        $this->environment = $environment;
     }
 
     /**
@@ -55,8 +63,8 @@ final class InvoiceFileResolver implements InvoiceFileResolverInterface
      */
     public function resolveInvoicePath(InvoiceInterface $invoice): string
     {
-        if (null === $invoice->getPath()) {
-            $invoicePath = $this->invoicePdfFileGenerator->generateFile($invoice->getOrder());
+        if (null === $invoice->getPath() || (null !== $invoice->getPath() && 'prod' !== $this->environment)) {
+            $invoicePath = $this->invoiceFileGenerator->generateFile($invoice);
 
             $invoice->setPath($invoicePath);
 
