@@ -63,7 +63,7 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
     public function generateFile(InvoiceInterface $invoice): string
     {
         $html = $this->templatingEngine->render(
-            "BitBagSyliusInvoicingPlugin::invoice.html.twig", [
+            'BitBagSyliusInvoicingPlugin::invoice.html.twig', [
                 'invoice' => $invoice,
                 'companyData' => $this->companyDataResolver->resolveCompanyData(),
             ]

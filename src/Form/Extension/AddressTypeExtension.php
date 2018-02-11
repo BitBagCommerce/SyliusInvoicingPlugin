@@ -42,8 +42,7 @@ final class AddressTypeExtension extends AbstractTypeExtension
     public function __construct(
         InvoiceRepositoryInterface $invoiceRepository,
         EntityManagerInterface $invoiceEntityManager
-    )
-    {
+    ) {
         $this->invoiceRepository = $invoiceRepository;
         $this->invoiceEntityManager = $invoiceEntityManager;
     }
@@ -63,7 +62,6 @@ final class AddressTypeExtension extends AbstractTypeExtension
                         'mapped' => false,
                     ])
                 ;
-
             })
             ->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event): void {
                 $billingAddressForm = $this->getBillingAddressForm($event);
@@ -87,7 +85,7 @@ final class AddressTypeExtension extends AbstractTypeExtension
             })
         ;
     }
-    
+
     /**
      * {@inheritdoc}
      */

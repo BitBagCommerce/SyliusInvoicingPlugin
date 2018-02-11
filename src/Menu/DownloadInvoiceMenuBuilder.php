@@ -37,8 +37,7 @@ final class DownloadInvoiceMenuBuilder
     public function __construct(
         InvoiceRepositoryInterface $invoiceRepository,
         CompanyDataResolverInterface $companyDataResolver
-    )
-    {
+    ) {
         $this->invoiceRepository = $invoiceRepository;
         $this->companyDataResolver = $companyDataResolver;
     }
@@ -64,7 +63,6 @@ final class DownloadInvoiceMenuBuilder
         }
 
         $this->addDownloadInvoiceMenuItem($menu, $order);
-
     }
 
     /**

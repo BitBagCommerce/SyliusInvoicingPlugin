@@ -36,8 +36,7 @@ final class DownloadOrderInvoice
     public function __construct(
         InvoiceRepositoryInterface $invoiceRepository,
         InvoiceFileResolverInterface $invoiceFileResolver
-    )
-    {
+    ) {
         $this->invoiceRepository = $invoiceRepository;
         $this->invoiceFileResolver = $invoiceFileResolver;
     }

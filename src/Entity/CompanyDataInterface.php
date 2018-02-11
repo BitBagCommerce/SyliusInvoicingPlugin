@@ -19,12 +19,12 @@ interface CompanyDataInterface extends ResourceInterface
     public function setName(?string $name): void;
 
     /**
-     * @return null|string
+     * @return string|null
      */
     public function getVatNumber(): ?string;
 
     /**
-     * @param null|string $vatNumber
+     * @param string|null $vatNumber
      */
     public function setVatNumber(?string $vatNumber): void;
 

@@ -50,8 +50,7 @@ final class InvoiceFileResolver implements InvoiceFileResolverInterface
         InvoiceRepositoryInterface $invoiceRepository,
         EntityManagerInterface $invoiceEntityManager,
         string $environment
-    )
-    {
+    ) {
         $this->invoiceFileGenerator = $invoiceFileGenerator;
         $this->invoiceRepository = $invoiceRepository;
         $this->invoiceEntityManager = $invoiceEntityManager;
