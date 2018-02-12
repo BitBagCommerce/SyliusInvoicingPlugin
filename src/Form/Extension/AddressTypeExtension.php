@@ -36,13 +36,24 @@ final class AddressTypeExtension extends AbstractTypeExtension
     private $invoiceEntityManager;
 
     /**
+     * @var FormInterface
+     */
+    private $billingAddressForm;
+
+    /**
+     * @var InvoiceInterface
+     */
+    private $invoice;
+
+    /**
      * @param InvoiceRepositoryInterface $invoiceRepository
      * @param EntityManagerInterface $invoiceEntityManager
      */
     public function __construct(
         InvoiceRepositoryInterface $invoiceRepository,
         EntityManagerInterface $invoiceEntityManager
-    ) {
+    )
+    {
         $this->invoiceRepository = $invoiceRepository;
         $this->invoiceEntityManager = $invoiceEntityManager;
     }
@@ -54,32 +65,40 @@ final class AddressTypeExtension extends AbstractTypeExtension
     {
         $builder
             ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event): void {
-                $billingAddressForm = $this->getBillingAddressForm($event);
+                $billingAddressForm = $event->getForm()->getParent()->get('billingAddress');
 
-                $billingAddressForm
-                    ->add('invoice', InvoiceType::class, [
-                        'label' => false,
-                        'mapped' => false,
-                    ])
-                ;
-            })
-            ->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event): void {
-                $billingAddressForm = $this->getBillingAddressForm($event);
+                if ($event->getForm() !== $billingAddressForm) {
+                    return;
+                }
+
                 $order = $billingAddressForm->getParent()->getData();
+                $invoice = $this->invoiceRepository->findByOrderId($order->getId());
 
-                $billingAddressForm->get('invoice')->setData($this->invoiceRepository->findByOrderId($order->getId()));
+                $billingAddressForm->add('invoice', InvoiceType::class, [
+                    'label' => false,
+                    'mapped' => false,
+                ]);
+
+                if (null !== $invoice) {
+                    $billingAddressForm->get('invoice')->setData($invoice);
+                }
+
+                $this->billingAddressForm = $billingAddressForm;
+                $this->invoice = $invoice;
             })
-            ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event): void {
-                $billingAddressForm = $this->getBillingAddressForm($event);
-                /** @var InvoiceInterface $invoice */
-                $invoice = $billingAddressForm->get('invoice')->getData();
+            ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event): void {
+                if ($event->getForm() !== $this->billingAddressForm || null === $this->invoice) {
+                    return;
+                }
 
-                if (null !== $invoice->getVatNumber() && true === $billingAddressForm->isValid()) {
-                    $order = $billingAddressForm->getParent()->getData();
+                if (null !== $this->invoice->getVatNumber() &&
+                    null !== $this->invoice->getId() &&
+                    true === $this->billingAddressForm->isValid()) {
+                    $order = $this->billingAddressForm->getParent()->getData();
 
-                    $invoice->setOrder($order);
+                    $this->invoice->setOrder($order);
 
-                    $this->invoiceEntityManager->persist($invoice);
+                    $this->invoiceEntityManager->persist($this->invoice);
                     $this->invoiceEntityManager->flush();
                 }
             })
@@ -92,15 +111,5 @@ final class AddressTypeExtension extends AbstractTypeExtension
     public function getExtendedType(): string
     {
         return AddressType::class;
-    }
-
-    /**
-     * @param FormEvent $event
-     *
-     * @return FormInterface
-     */
-    private function getBillingAddressForm(FormEvent $event): FormInterface
-    {
-        return $event->getForm()->getParent()->get('billingAddress');
     }
 }
