@@ -50,7 +50,7 @@ This plugin uses wkhtmltopdf under the hood wrapped into [KnpSnappyBundle](https
 It requires you to install the wkthmltopdf binary. Read more [in the KnpSnappyBundle docs](https://github.com/KnpLabs/KnpSnappyBundle)
 and on [Wkhtmltopdf website](https://wkhtmltopdf.org/).
 
-### Available services you can [decorate](https://symfony.com/doc/current/service_container/service_decoration.html).
+### Available services you can [decorate](https://symfony.com/doc/current/service_container/service_decoration.html) and forms you can [extend](http://symfony.com/doc/current/form/create_form_type_extension.html).
 
 ```bash
   bitbag_sylius_invoicing_plugin.controller.action.download_order_invoice                      BitBag\SyliusInvoicingPlugin\Controller\Action\DownloadOrderInvoice                                       
