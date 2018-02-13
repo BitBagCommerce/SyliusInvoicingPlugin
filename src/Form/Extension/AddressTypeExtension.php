@@ -52,8 +52,7 @@ final class AddressTypeExtension extends AbstractTypeExtension
     public function __construct(
         InvoiceRepositoryInterface $invoiceRepository,
         EntityManagerInterface $invoiceEntityManager
-    )
-    {
+    ) {
         $this->invoiceRepository = $invoiceRepository;
         $this->invoiceEntityManager = $invoiceEntityManager;
     }
