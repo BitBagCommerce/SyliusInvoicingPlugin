@@ -50,37 +50,6 @@ This plugin uses wkhtmltopdf under the hood wrapped into [KnpSnappyBundle](https
 It requires you to install the wkthmltopdf binary. Read more [in the KnpSnappyBundle docs](https://github.com/KnpLabs/KnpSnappyBundle)
 and on [Wkhtmltopdf website](https://wkhtmltopdf.org/).
 
-### Available services you can [decorate](https://symfony.com/doc/current/service_container/service_decoration.html) and forms you can [extend](http://symfony.com/doc/current/form/create_form_type_extension.html)
-
-```bash
-  bitbag_sylius_invoicing_plugin.controller.action.download_order_invoice                      BitBag\SyliusInvoicingPlugin\Controller\Action\DownloadOrderInvoice                                       
-  bitbag_sylius_invoicing_plugin.controller.company_data                                       Sylius\Bundle\ResourceBundle\Controller\ResourceController                                                
-  bitbag_sylius_invoicing_plugin.controller.invoice                                            Sylius\Bundle\ResourceBundle\Controller\ResourceController                                                
-  bitbag_sylius_invoicing_plugin.event_listener.company_data                                   BitBag\SyliusInvoicingPlugin\Menu\CompanyDataMenuBuilder                                                  
-  bitbag_sylius_invoicing_plugin.event_listener.order_show                                     BitBag\SyliusInvoicingPlugin\Menu\DownloadInvoiceMenuBuilder                                              
-  bitbag_sylius_invoicing_plugin.factory.company_data                                          Sylius\Component\Resource\Factory\Factory                                                                 
-  bitbag_sylius_invoicing_plugin.factory.invoice                                               Sylius\Component\Resource\Factory\Factory                                                                 
-  bitbag_sylius_invoicing_plugin.file_generator.invoice_file                                   BitBag\SyliusInvoicingPlugin\FileGenerator\InvoicePdfFileGenerator                                        
-  bitbag_sylius_invoicing_plugin.form.extension.address                                        BitBag\SyliusInvoicingPlugin\Form\Extension\AddressTypeExtension                                          
-  bitbag_sylius_invoicing_plugin.form.type.company_data                                        BitBag\SyliusInvoicingPlugin\Form\Type\CompanyDataType                                                    
-  bitbag_sylius_invoicing_plugin.form.type.invoice                                             BitBag\SyliusInvoicingPlugin\Form\Type\InvoiceType                                                        
-  bitbag_sylius_invoicing_plugin.manager.company_data                                          alias for "doctrine.orm.default_entity_manager"                                                           
-  bitbag_sylius_invoicing_plugin.manager.invoice                                               alias for "doctrine.orm.default_entity_manager"                                                           
-  bitbag_sylius_invoicing_plugin.repository.company_data                                       BitBag\SyliusInvoicingPlugin\Repository\CompanyDataRepository                                             
-  bitbag_sylius_invoicing_plugin.repository.invoice                                            BitBag\SyliusInvoicingPlugin\Repository\InvoiceRepository                                                 
-  bitbag_sylius_invoicing_plugin.resolver.company_data                                         BitBag\SyliusInvoicingPlugin\Resolver\CompanyDataResolver                                                 
-  bitbag_sylius_invoicing_plugin.resolver.invoice_file                                         BitBag\SyliusInvoicingPlugin\Resolver\InvoiceFileResolver                                                 
-  bitbag_sylius_invoicing_plugin.validator.vat_number                                          BitBag\SyliusInvoicingPlugin\Validator\Constraints\VatNumberValidator
-```
-
-### Parameters you can override in your parameters.yml(.dist) file
-
-```yml
-parameters:
-    wkhtmltopdf_binary_path: /usr/local/bin/wkhtmltopdf
-    invoices_root_dir: "%kernel.root_dir%/../invoices"
-```
-
 Import required config in your `app/config/config.yml` file:
 
 ```yaml
@@ -118,6 +87,39 @@ To see what templates you need to override in order to enable this plugin on you
 To override the invoice template, override the `invoice.html.twig` file of this plugin, which you should 
 do in `app/Resources/BitBagSyliusInvoicingPlugin/views/invoice.html.twig` file of your local project or in the
 theme path, in case you are using multiple themes. 
+
+## Customization
+
+### Available services you can [decorate](https://symfony.com/doc/current/service_container/service_decoration.html) and forms you can [extend](http://symfony.com/doc/current/form/create_form_type_extension.html)
+
+```bash
+  bitbag_sylius_invoicing_plugin.controller.action.download_order_invoice                      BitBag\SyliusInvoicingPlugin\Controller\Action\DownloadOrderInvoice                                       
+  bitbag_sylius_invoicing_plugin.controller.company_data                                       Sylius\Bundle\ResourceBundle\Controller\ResourceController                                                
+  bitbag_sylius_invoicing_plugin.controller.invoice                                            Sylius\Bundle\ResourceBundle\Controller\ResourceController                                                
+  bitbag_sylius_invoicing_plugin.event_listener.company_data                                   BitBag\SyliusInvoicingPlugin\Menu\CompanyDataMenuBuilder                                                  
+  bitbag_sylius_invoicing_plugin.event_listener.order_show                                     BitBag\SyliusInvoicingPlugin\Menu\DownloadInvoiceMenuBuilder                                              
+  bitbag_sylius_invoicing_plugin.factory.company_data                                          Sylius\Component\Resource\Factory\Factory                                                                 
+  bitbag_sylius_invoicing_plugin.factory.invoice                                               Sylius\Component\Resource\Factory\Factory                                                                 
+  bitbag_sylius_invoicing_plugin.file_generator.invoice_file                                   BitBag\SyliusInvoicingPlugin\FileGenerator\InvoicePdfFileGenerator                                        
+  bitbag_sylius_invoicing_plugin.form.extension.address                                        BitBag\SyliusInvoicingPlugin\Form\Extension\AddressTypeExtension                                          
+  bitbag_sylius_invoicing_plugin.form.type.company_data                                        BitBag\SyliusInvoicingPlugin\Form\Type\CompanyDataType                                                    
+  bitbag_sylius_invoicing_plugin.form.type.invoice                                             BitBag\SyliusInvoicingPlugin\Form\Type\InvoiceType                                                        
+  bitbag_sylius_invoicing_plugin.manager.company_data                                          alias for "doctrine.orm.default_entity_manager"                                                           
+  bitbag_sylius_invoicing_plugin.manager.invoice                                               alias for "doctrine.orm.default_entity_manager"                                                           
+  bitbag_sylius_invoicing_plugin.repository.company_data                                       BitBag\SyliusInvoicingPlugin\Repository\CompanyDataRepository                                             
+  bitbag_sylius_invoicing_plugin.repository.invoice                                            BitBag\SyliusInvoicingPlugin\Repository\InvoiceRepository                                                 
+  bitbag_sylius_invoicing_plugin.resolver.company_data                                         BitBag\SyliusInvoicingPlugin\Resolver\CompanyDataResolver                                                 
+  bitbag_sylius_invoicing_plugin.resolver.invoice_file                                         BitBag\SyliusInvoicingPlugin\Resolver\InvoiceFileResolver                                                 
+  bitbag_sylius_invoicing_plugin.validator.vat_number                                          BitBag\SyliusInvoicingPlugin\Validator\Constraints\VatNumberValidator
+```
+
+### Parameters you can override in your parameters.yml(.dist) file
+
+```yml
+parameters:
+    wkhtmltopdf_binary_path: /usr/local/bin/wkhtmltopdf
+    invoices_root_dir: "%kernel.root_dir%/../invoices"
+```
 
 ## Testing
 ```bash
