@@ -63,7 +63,7 @@ Import routing in your `app/config/routing.yml` file:
 ...
 
 bitbag_sylius_cms_plugin:
-    resource: '@BitBagSyliusInvoicingPlugin/Resources/config/routing.yml'
+    resource: "@BitBagSyliusInvoicingPlugin/Resources/config/routing.yml"
 ```
 
 Finish the installation by updating/migrating the database schema:
