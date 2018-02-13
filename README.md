@@ -38,6 +38,7 @@ public function registerBundles()
     return array_merge(parent::registerBundles(), [
         ...
         
+        new \Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
         new \BitBag\SyliusInvoicingPlugin\BitBagSyliusInvoicingPlugin(),
     ]);
 }
