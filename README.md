@@ -1,94 +1,104 @@
-<p align="center">
-    <a href="http://sylius.org" target="_blank">
-        <img src="http://demo.sylius.org/assets/shop/img/logo.png" />
+<h1 align="center">
+    <a href="http://bitbag.shop" target="_blank">
+        <img src="https://raw.githubusercontent.com/bitbager/BitBagCommerceAssets/master/SyliusInvoicingPlugin.png" />
     </a>
-</p>
-<h1 align="center">Plugin Skeleton</h1>
-<p align="center">
-    <a href="https://packagist.org/packages/sylius/plugin-skeleton" title="License">
-        <img src="https://img.shields.io/packagist/l/sylius/plugin-skeleton.svg" />
+    <br />
+    <a href="https://packagist.org/packages/bitbag/invoicing-plugin" title="License" target="_blank">
+        <img src="https://img.shields.io/packagist/l/bitbag/invoicing-plugin.svg" />
     </a>
-    <a href="https://packagist.org/packages/sylius/plugin-skeleton" title="Version">
-        <img src="https://img.shields.io/packagist/v/sylius/plugin-skeleton.svg" />
+    <a href="https://packagist.org/packages/bitbag/invoicing-plugin" title="Version" target="_blank">
+        <img src="https://img.shields.io/packagist/v/bitbag/invoicing-plugin.svg" />
     </a>
-    <a href="http://travis-ci.org/Sylius/PluginSkeleton" title="Build status">
-        <img src="https://img.shields.io/travis/Sylius/PluginSkeleton/master.svg" />
+    <a href="http://travis-ci.org/BitBagCommerce/SyliusInvoicingPlugin" title="Build status" target="_blank">
+        <img src="https://img.shields.io/travis/BitBagCommerce/SyliusInvoicingPlugin/master.svg" />
     </a>
-    <a href="https://scrutinizer-ci.com/g/Sylius/PluginSkeleton/" title="Scrutinizer">
-        <img src="https://img.shields.io/scrutinizer/g/Sylius/PluginSkeleton.svg" />
+    <a href="https://scrutinizer-ci.com/g/BitBagCommerce/SyliusInvoicingPlugin/" title="Scrutinizer" target="_blank">
+        <img src="https://img.shields.io/scrutinizer/g/BitBagCommerce/SyliusInvoicingPlugin.svg" />
     </a>
-</p>
+    <a href="https://packagist.org/packages/bitbag/invoicing-plugin" title="Total Downloads" target="_blank">
+        <img src="https://poser.pugx.org/bitbag/invoicing-plugin/downloads" />
+    </a>
+</h1>
+
+
+## Overview
+
+This plugin enables generating invoices in Sylius platform application. It adds a VAT number field for the billing
+address during the checkout and allows to download the invoice in the admin panel view. 
 
 ## Installation
-
-1. Run `composer create-project sylius/plugin-skeleton ProjectName`.
-
-2. From the plugin skeleton root directory, run the following commands:
-
-    ```bash
-    $ (cd tests/Application && yarn install)
-    $ (cd tests/Application && yarn run gulp)
-    $ (cd tests/Application && bin/console assets:install web -e test)
+```bash
+$ composer require bitbag/invoicing-plugin
+```
     
-    $ (cd tests/Application && bin/console doctrine:database:create -e test)
-    $ (cd tests/Application && bin/console doctrine:schema:create -e test)
-    ```
+Add plugin dependencies to your AppKernel.php file:
+```php
+public function registerBundles()
+{
+    return array_merge(parent::registerBundles(), [
+        ...
+        
+        new \BitBag\SyliusInvoicingPlugin\BitBagSyliusInvoicingPlugin(),
+    ]);
+}
+```
+
+Import required config in your `app/config/config.yml` file:
+
+```yaml
+# app/config/config.yml
+
+imports:
+    ...
+    
+    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/config.yml" }
+```
+
+Import routing in your `app/config/routing.yml` file:
+
+```yaml
+
+# app/config/routing.yml
+...
+
+bitbag_sylius_cms_plugin:
+    resource: '@BitBagSyliusInvoicingPlugin/Resources/config/routing.yml'
+```
+
+Finish the installation by updating/migrating the database schema:
+```
+$ bin/console doctrine:schema:update --force
+```
 
 ## Usage
 
-### Running plugin tests
+In your admin panel, add the company data. So far, only single company data is supported. 
 
-  - PHPUnit
+To see what templates you need to override in order to enable this plugin on your storefront, browse Twig files from 
+`/tests/Application/app/Resources/SyliusShopBundle` path of this plugin. 
 
-    ```bash
-    $ bin/phpunit
-    ```
+To override the invoice template, override the `invoice.html.twig` file of this plugin, which you should 
+do in `app/Resources/BitBagSyliusInvoicingPlugin/views/invoice.html.twig` file of your local project or in the
+theme path, in case you are using multiple themes. 
 
-  - PHPSpec
+## Testing
+```bash
+$ composer install
+$ cd tests/Application
+$ yarn install
+$ yarn run gulp
+$ bin/console assets:install web -e test
+$ bin/console doctrine:schema:create -e test
+$ bin/console server:run 127.0.0.1:8080 -d web -e test
+$ open http://localhost:8080
+$ bin/behat
+$ bin/phpspec run
+```
 
-    ```bash
-    $ bin/phpspec run
-    ```
+## Contribution
 
-  - Behat (non-JS scenarios)
+Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/.
 
-    ```bash
-    $ bin/behat --tags="~@javascript"
-    ```
+## Support
 
-  - Behat (JS scenarios)
- 
-    1. Download [Chromedriver](https://sites.google.com/a/chromium.org/chromedriver/)
-    
-    2. Run Selenium server with previously downloaded Chromedriver:
-    
-        ```bash
-        $ bin/selenium-server-standalone -Dwebdriver.chrome.driver=chromedriver
-        ```
-    3. Run test application's webserver on `localhost:8080`:
-    
-        ```bash
-        $ (cd tests/Application && bin/console server:run 127.0.0.1:8080 -d web -e test)
-        ```
-    
-    4. Run Behat:
-    
-        ```bash
-        $ bin/behat --tags="@javascript"
-        ```
-
-### Opening Sylius with your plugin
-
-- Using `test` environment:
-
-    ```bash
-    $ (cd tests/Application && bin/console sylius:fixtures:load -e test)
-    $ (cd tests/Application && bin/console server:run -d web -e test)
-    ```
-    
-- Using `dev` environment:
-
-    ```bash
-    $ (cd tests/Application && bin/console sylius:fixtures:load -e dev)
-    $ (cd tests/Application && bin/console server:run -d web -e dev)
-    ```
+Want us to help you with this plugin or any Sylius project? Write us an email on mikolaj.krol@bitbag.pl :computer:
