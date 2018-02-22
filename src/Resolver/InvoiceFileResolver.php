@@ -63,13 +63,12 @@ final class InvoiceFileResolver implements InvoiceFileResolverInterface
     public function resolveInvoicePath(InvoiceInterface $invoice): string
     {
         if (null === $invoice->getPath() || (null !== $invoice->getPath() && 'prod' !== $this->environment)) {
-            $invoicePath = $this->invoiceFileGenerator->generateFile($invoice);
-
-            $invoice->setPath($invoicePath);
+            $invoiceFilename = $this->invoiceFileGenerator->generateFile($invoice);
+            $invoice->setPath($invoiceFilename);
 
             $this->invoiceEntityManager->flush();
         }
 
-        return $invoice->getPath();
+        return $this->invoiceFileGenerator->getFilesPath() . DIRECTORY_SEPARATOR . $invoice->getPath();
     }
 }

@@ -68,10 +68,32 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
                 'companyData' => $this->companyDataResolver->resolveCompanyData(),
             ]
         );
-        $path = $this->filesPath . '/' . (string) $invoice->getId() . bin2hex(random_bytes(6)) . '.pdf';
-
+        $filename = $this->getInvoiceFilename($invoice);
+        $path = $this->filesPath . DIRECTORY_SEPARATOR . $filename;
         $this->pdfFileGenerator->generateFromHtml($html, $path);
 
-        return $path;
+        return $filename;
+    }
+
+    /**
+     * @param InvoiceInterface $invoice
+     * @return string Returns an explicit invoice file name
+     */
+    protected function getInvoiceFilename(InvoiceInterface $invoice): string
+    {
+        $tokens = [
+            $invoice->getOrder()->getNumber(),
+            $invoice->getOrder()->getCreatedAt()->format('Ymd'),
+            bin2hex(random_bytes(6)),
+        ];
+        return (string) implode('_', $tokens) . '.pdf';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFilesPath(): string
+    {
+        return $this->filesPath;
     }
 }
