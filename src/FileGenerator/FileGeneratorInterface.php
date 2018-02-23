@@ -19,12 +19,12 @@ interface FileGeneratorInterface
     /**
      * @param InvoiceInterface $invoice
      *
-     * @return string Invoice filename
+     * @return string
      */
     public function generateFile(InvoiceInterface $invoice): string;
 
     /**
-     * @return string Absolute invoices folder path
+     * @return string
      */
     public function getFilesPath(): string;
 }
