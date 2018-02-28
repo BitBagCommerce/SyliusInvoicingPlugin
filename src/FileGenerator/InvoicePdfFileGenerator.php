@@ -20,6 +20,11 @@ use Symfony\Component\Templating\EngineInterface;
 final class InvoicePdfFileGenerator implements FileGeneratorInterface
 {
     /**
+     * @var FilenameGeneratorInterface
+     */
+    protected $filenameGenerator;
+
+    /**
      * @var GeneratorInterface
      */
     private $pdfFileGenerator;
@@ -44,17 +49,20 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
      * @param EngineInterface $templatingEngine
      * @param CompanyDataResolverInterface $companyDataResolver
      * @param string $filesPath
+     * @param FilenameGeneratorInterface $filenameGenerator
      */
     public function __construct(
         GeneratorInterface $pdfFileGenerator,
         EngineInterface $templatingEngine,
         CompanyDataResolverInterface $companyDataResolver,
-        string $filesPath
+        string $filesPath,
+        FilenameGeneratorInterface $filenameGenerator
     ) {
         $this->pdfFileGenerator = $pdfFileGenerator;
         $this->templatingEngine = $templatingEngine;
         $this->companyDataResolver = $companyDataResolver;
         $this->filesPath = $filesPath;
+        $this->filenameGenerator = $filenameGenerator;
     }
 
     /**
@@ -68,28 +76,12 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
                 'companyData' => $this->companyDataResolver->resolveCompanyData(),
             ]
         );
-        $filename = $this->getInvoiceFilename($invoice);
+        $filename = $this->filenameGenerator->generateFilename($invoice);
         $path = $this->filesPath . DIRECTORY_SEPARATOR . $filename;
         
         $this->pdfFileGenerator->generateFromHtml($html, $path);
 
         return $filename;
-    }
-
-    /**
-     * @param InvoiceInterface $invoice
-     *
-     * @return string Returns an explicit invoice file name
-     */
-    protected function getInvoiceFilename(InvoiceInterface $invoice): string
-    {
-        $tokens = [
-            $invoice->getOrder()->getNumber(),
-            $invoice->getOrder()->getCreatedAt()->format('Ymd'),
-            bin2hex(random_bytes(6)),
-        ];
-
-        return (string) implode('_', $tokens) . '.pdf';
     }
 
     /**
