@@ -69,6 +69,6 @@ final class InvoiceFileResolver implements InvoiceFileResolverInterface
             $this->invoiceEntityManager->flush();
         }
 
-        return $this->invoiceFileGenerator->getFilesPath() . DIRECTORY_SEPARATOR . $invoice->getPath();
+        return $this->invoiceFileGenerator->getFilesDirectoryPath() . DIRECTORY_SEPARATOR . $invoice->getPath();
     }
 }

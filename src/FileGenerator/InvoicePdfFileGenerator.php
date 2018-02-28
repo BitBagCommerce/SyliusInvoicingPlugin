@@ -78,6 +78,7 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
 
     /**
      * @param InvoiceInterface $invoice
+     *
      * @return string Returns an explicit invoice file name
      */
     protected function getInvoiceFilename(InvoiceInterface $invoice): string
@@ -94,7 +95,7 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function getFilesPath(): string
+    public function getFilesDirectoryPath(): string
     {
         return $this->filesPath;
     }

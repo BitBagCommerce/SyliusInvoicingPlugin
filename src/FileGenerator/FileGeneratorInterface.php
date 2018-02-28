@@ -26,5 +26,5 @@ interface FileGeneratorInterface
     /**
      * @return string
      */
-    public function getFilesPath(): string;
+    public function getFilesDirectoryPath(): string;
 }
