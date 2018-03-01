@@ -22,7 +22,7 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
     /**
      * @var FilenameGeneratorInterface
      */
-    protected $filenameGenerator;
+    private $filenameGenerator;
 
     /**
      * @var GeneratorInterface
@@ -48,15 +48,15 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
      * @param GeneratorInterface $pdfFileGenerator
      * @param EngineInterface $templatingEngine
      * @param CompanyDataResolverInterface $companyDataResolver
-     * @param string $filesPath
      * @param FilenameGeneratorInterface $filenameGenerator
+     * @param string $filesPath
      */
     public function __construct(
         GeneratorInterface $pdfFileGenerator,
         EngineInterface $templatingEngine,
         CompanyDataResolverInterface $companyDataResolver,
-        string $filesPath,
-        FilenameGeneratorInterface $filenameGenerator
+        FilenameGeneratorInterface $filenameGenerator,
+        string $filesPath
     ) {
         $this->pdfFileGenerator = $pdfFileGenerator;
         $this->templatingEngine = $templatingEngine;

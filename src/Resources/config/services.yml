@@ -14,8 +14,8 @@ services:
             - "@knp_snappy.pdf"
             - "@templating"
             - "@bitbag_sylius_invoicing_plugin.resolver.company_data"
-            - "%invoices_root_dir%"
             - "@bitbag_sylius_invoicing_plugin.file_generator.invoice_filename"
+            - "%invoices_root_dir%"
 
     bitbag_sylius_invoicing_plugin.validator.vat_number:
         class: BitBag\SyliusInvoicingPlugin\Validator\Constraints\VatNumberValidator
