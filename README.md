@@ -100,6 +100,7 @@ theme path, in case you are using multiple themes.
   bitbag_sylius_invoicing_plugin.event_listener.order_show                                     BitBag\SyliusInvoicingPlugin\Menu\DownloadInvoiceMenuBuilder                                              
   bitbag_sylius_invoicing_plugin.factory.company_data                                          Sylius\Component\Resource\Factory\Factory                                                                 
   bitbag_sylius_invoicing_plugin.factory.invoice                                               Sylius\Component\Resource\Factory\Factory                                                                 
+  bitbag_sylius_invoicing_plugin.file_generator.invoice_filename                               BitBag\SyliusInvoicingPlugin\FileGenerator\InvoicePdfFilenameGenerator                                        
   bitbag_sylius_invoicing_plugin.file_generator.invoice_file                                   BitBag\SyliusInvoicingPlugin\FileGenerator\InvoicePdfFileGenerator                                        
   bitbag_sylius_invoicing_plugin.form.extension.address                                        BitBag\SyliusInvoicingPlugin\Form\Extension\AddressTypeExtension                                          
   bitbag_sylius_invoicing_plugin.form.type.company_data                                        BitBag\SyliusInvoicingPlugin\Form\Type\CompanyDataType                                                    

@@ -14,17 +14,19 @@ namespace BitBag\SyliusInvoicingPlugin\FileGenerator;
 
 use BitBag\SyliusInvoicingPlugin\Entity\InvoiceInterface;
 
-interface FileGeneratorInterface
+final class InvoicePdfFilenameGenerator implements FilenameGeneratorInterface
 {
     /**
-     * @param InvoiceInterface $invoice
-     *
-     * @return string
+     * @inheritDoc
      */
-    public function generateFile(InvoiceInterface $invoice): string;
+    public function generateFilename(InvoiceInterface $invoice): string
+    {
+        $tokens = [
+            $invoice->getOrder()->getNumber(),
+            $invoice->getOrder()->getCreatedAt()->format('Ymd'),
+            bin2hex(random_bytes(6)),
+        ];
 
-    /**
-     * @return string
-     */
-    public function getFilesDirectoryPath(): string;
+        return (string) implode('_', $tokens) . '.pdf';
+    }
 }

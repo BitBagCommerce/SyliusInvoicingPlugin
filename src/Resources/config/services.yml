@@ -5,12 +5,16 @@ imports:
     - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/services/resolver.yml" }
 
 services:
+    bitbag_sylius_invoicing_plugin.file_generator.invoice_filename:
+        class: BitBag\SyliusInvoicingPlugin\FileGenerator\InvoicePdfFilenameGenerator
+
     bitbag_sylius_invoicing_plugin.file_generator.invoice_file:
         class: BitBag\SyliusInvoicingPlugin\FileGenerator\InvoicePdfFileGenerator
         arguments:
             - "@knp_snappy.pdf"
             - "@templating"
             - "@bitbag_sylius_invoicing_plugin.resolver.company_data"
+            - "@bitbag_sylius_invoicing_plugin.file_generator.invoice_filename"
             - "%invoices_root_dir%"
 
     bitbag_sylius_invoicing_plugin.validator.vat_number:

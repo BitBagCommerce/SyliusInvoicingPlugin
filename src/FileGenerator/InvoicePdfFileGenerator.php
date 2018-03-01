@@ -20,6 +20,11 @@ use Symfony\Component\Templating\EngineInterface;
 final class InvoicePdfFileGenerator implements FileGeneratorInterface
 {
     /**
+     * @var FilenameGeneratorInterface
+     */
+    private $filenameGenerator;
+
+    /**
      * @var GeneratorInterface
      */
     private $pdfFileGenerator;
@@ -43,17 +48,20 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
      * @param GeneratorInterface $pdfFileGenerator
      * @param EngineInterface $templatingEngine
      * @param CompanyDataResolverInterface $companyDataResolver
+     * @param FilenameGeneratorInterface $filenameGenerator
      * @param string $filesPath
      */
     public function __construct(
         GeneratorInterface $pdfFileGenerator,
         EngineInterface $templatingEngine,
         CompanyDataResolverInterface $companyDataResolver,
+        FilenameGeneratorInterface $filenameGenerator,
         string $filesPath
     ) {
         $this->pdfFileGenerator = $pdfFileGenerator;
         $this->templatingEngine = $templatingEngine;
         $this->companyDataResolver = $companyDataResolver;
+        $this->filenameGenerator = $filenameGenerator;
         $this->filesPath = $filesPath;
     }
 
@@ -68,10 +76,19 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
                 'companyData' => $this->companyDataResolver->resolveCompanyData(),
             ]
         );
-        $path = $this->filesPath . '/' . (string) $invoice->getId() . bin2hex(random_bytes(6)) . '.pdf';
-
+        $filename = $this->filenameGenerator->generateFilename($invoice);
+        $path = $this->filesPath . DIRECTORY_SEPARATOR . $filename;
+        
         $this->pdfFileGenerator->generateFromHtml($html, $path);
 
-        return $path;
+        return $filename;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFilesDirectoryPath(): string
+    {
+        return $this->filesPath;
     }
 }

@@ -14,17 +14,12 @@ namespace BitBag\SyliusInvoicingPlugin\FileGenerator;
 
 use BitBag\SyliusInvoicingPlugin\Entity\InvoiceInterface;
 
-interface FileGeneratorInterface
+interface FilenameGeneratorInterface
 {
     /**
      * @param InvoiceInterface $invoice
      *
      * @return string
      */
-    public function generateFile(InvoiceInterface $invoice): string;
-
-    /**
-     * @return string
-     */
-    public function getFilesDirectoryPath(): string;
+    public function generateFilename(InvoiceInterface $invoice): string;
 }
