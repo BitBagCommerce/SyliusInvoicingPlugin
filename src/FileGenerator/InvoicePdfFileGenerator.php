@@ -61,8 +61,8 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
         $this->pdfFileGenerator = $pdfFileGenerator;
         $this->templatingEngine = $templatingEngine;
         $this->companyDataResolver = $companyDataResolver;
-        $this->filesPath = $filesPath;
         $this->filenameGenerator = $filenameGenerator;
+        $this->filesPath = $filesPath;
     }
 
     /**
