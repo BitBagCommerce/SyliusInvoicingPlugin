@@ -1,0 +1,34 @@
+bitbag_sylius_invoicing_plugin:
+    ui:
+        download_invoice: Télécharger la facture
+        company_name: Société
+        issued_at: Éditée le
+        transaction_date: Date de paiement
+        seller: Vendeur
+        customer: Client
+        invoice_for_order: Facture pour la commande
+        subtotal: Sous-total
+        discounted_price: Prix après remise
+        total: Total
+        vat: TVA
+        seller_signature: Signature du vendeur
+        customer_signature: Signature du client
+        issued_by: Éditée par
+        buyer_person: Acheteur
+        company_datas: Données de facturation
+        manage_company_invoice_data: Gérer les données de facturation
+        new_company_data: Ajouter une nouvelle donnée de facturation
+        edit_company_data: Éditer les données de facturation
+        invoice_data: Données de facturation
+        street: Voie
+        city: Ville
+        postcode: Code postal
+        vat_number: Numéro de TVA
+        table:
+            no: N°
+            item: Article
+            quantity: Quantité
+            discounted_unit_price: Prix unitaire après remise
+            subtotal: Sous-total
+            tax_total: Total des taxes
+            total: Total
