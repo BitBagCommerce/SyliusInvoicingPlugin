@@ -64,7 +64,8 @@ final class AddressTypeExtension extends AbstractTypeExtension
     {
         $builder
             ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event): void {
-                $parentForm = $event->getForm()->getParent()
+                $parentForm = $event->getForm()->getParent();
+                
                 if (null === $parentForm) {
                     return;
                 }
