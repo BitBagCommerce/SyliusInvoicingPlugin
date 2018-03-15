@@ -65,7 +65,7 @@ final class AddressTypeExtension extends AbstractTypeExtension
         $builder
             ->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event): void {
                 $parentForm = $event->getForm()->getParent();
-                
+
                 if (null === $parentForm) {
                     return;
                 }
@@ -82,11 +82,8 @@ final class AddressTypeExtension extends AbstractTypeExtension
                 $billingAddressForm->add('invoice', InvoiceType::class, [
                     'label' => false,
                     'mapped' => false,
+                    'data' => $invoice,
                 ]);
-
-                if (null !== $invoice) {
-                    $billingAddressForm->get('invoice')->setData($invoice);
-                }
 
                 $this->billingAddressForm = $billingAddressForm;
                 $this->invoice = $invoice;
