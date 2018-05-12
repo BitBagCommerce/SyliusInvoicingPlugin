@@ -26,6 +26,11 @@
 This plugin enables generating invoices in Sylius platform application. It adds a VAT number field for the billing
 address during the checkout and allows to download the invoice in the admin panel view. 
 
+## Support
+
+We work on amazing eCommerce projects on top of Sylius and Pimcore. Need some help or additional resources for a project?
+Write us an email on mikolaj.krol@bitbag.pl or visit [our website](https://bitbag.shop/)! :rocket:
+
 ## Installation
 ```bash
 $ composer require bitbag/invoicing-plugin
