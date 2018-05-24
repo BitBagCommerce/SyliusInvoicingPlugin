@@ -21,7 +21,6 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormInterface;
 
 final class AddressTypeExtension extends AbstractTypeExtension
 {
@@ -34,16 +33,6 @@ final class AddressTypeExtension extends AbstractTypeExtension
      * @var EntityManagerInterface
      */
     private $invoiceEntityManager;
-
-    /**
-     * @var FormInterface
-     */
-    private $billingAddressForm;
-
-    /**
-     * @var InvoiceInterface
-     */
-    private $invoice;
 
     /**
      * @param InvoiceRepositoryInterface $invoiceRepository
@@ -84,23 +73,22 @@ final class AddressTypeExtension extends AbstractTypeExtension
                     'mapped' => false,
                     'data' => $invoice,
                 ]);
-
-                $this->billingAddressForm = $billingAddressForm;
-                $this->invoice = $invoice;
             })
-            ->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event): void {
-                if ($event->getForm() !== $this->billingAddressForm || null === $this->invoice) {
+            ->addEventListener(FormEvents::POST_SUBMIT, function (FormEvent $event): void {
+                if (!$event->getForm()->has('invoice')) {
                     return;
                 }
 
-                if (null !== $this->invoice->getVatNumber() &&
-                    null !== $this->invoice->getId() &&
-                    true === $this->billingAddressForm->isValid()) {
-                    $order = $this->billingAddressForm->getParent()->getData();
+                /** @var InvoiceInterface $invoice */
+                $billingAddressForm = $event->getForm();
+                $invoice = $billingAddressForm->get('invoice')->getData();
 
-                    $this->invoice->setOrder($order);
+                if (null !== $invoice->getVatNumber() && true === $billingAddressForm->isValid()) {
+                    $order = $billingAddressForm->getParent()->getData();
 
-                    $this->invoiceEntityManager->persist($this->invoice);
+                    $invoice->setOrder($order);
+
+                    $invoice->getId() ?: $this->invoiceEntityManager->persist($invoice);
                     $this->invoiceEntityManager->flush();
                 }
             })
