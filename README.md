@@ -150,7 +150,3 @@ $ bin/phpspec run
 ## Contribution
 
 Learn more about our contribution workflow on http://docs.sylius.org/en/latest/contributing/.
-
-## Support
-
-Want us to help you with this plugin or any Sylius project? Write us an email on mikolaj.krol@bitbag.pl :computer:
