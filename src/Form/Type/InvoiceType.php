@@ -25,7 +25,7 @@ final class InvoiceType extends AbstractResourceType
     {
         $builder->add('vatNumber', TextType::class, [
             'label' => 'bitbag_sylius_invoicing_plugin.ui.vat_number',
-            'required' => false,
+            'required' => true,
         ]);
     }
 }
