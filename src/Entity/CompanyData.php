@@ -47,6 +47,11 @@ class CompanyData implements CompanyDataInterface
     /**
      * @var string
      */
+    protected $countryCode;
+
+    /**
+     * @var string
+     */
     protected $seller;
 
     /**
@@ -135,6 +140,22 @@ class CompanyData implements CompanyDataInterface
     public function setPostcode(?string $postcode): void
     {
         $this->postcode = $postcode;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCountryCode(): ?string
+    {
+        return $this->countryCode;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCountryCode(?string $countryCode): void
+    {
+        $this->countryCode = $countryCode;
     }
 
     /**

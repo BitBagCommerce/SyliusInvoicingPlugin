@@ -75,7 +75,7 @@ final class DownloadInvoiceMenuBuilder
                 'route' => 'bitbag_sylius_invoicing_plugin_admin_company_data_index',
             ])
             ->setAttribute('type', 'link')
-            ->setLabel('bitbag_sylius_invoicing_plugin.ui.set_invocie_data')
+            ->setLabel('bitbag_sylius_invoicing_plugin.ui.set_invoice_data')
             ->setLabelAttribute('icon', 'warning')
             ->setLabelAttribute('color', 'yellow')
         ;

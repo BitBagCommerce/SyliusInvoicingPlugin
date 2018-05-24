@@ -201,6 +201,7 @@
                         {{ companyData.name }}<br/><br/>
                         {{ companyData.street }}<br/>
                         {{ companyData.postcode }} {{ companyData.city }}<br/>
+                        {{ companyData.countryCode|sylius_country_name|upper }}
                         {{ 'bitbag_sylius_invoicing_plugin.ui.vat'|trans }}: {{ companyData.vatNumber }}<br/>
                     </div>
                 </div>
@@ -214,7 +215,7 @@
                         {{ billingAddress.company }}<br/><br/>
                         {{ billingAddress.street }}<br/>
                         {{ billingAddress.postcode }} {{ billingAddress.city }}<br/>
-                        {{ billingAddress.countryCode }}<br/>
+                        {{ billingAddress.countryCode|sylius_country_name|upper }}<br/>
                         {{ 'bitbag_sylius_invoicing_plugin.ui.vat'|trans }}: {{ invoice.vatNumber }}
                     </div>
                 </div>

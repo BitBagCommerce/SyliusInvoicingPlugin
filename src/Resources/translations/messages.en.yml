@@ -23,6 +23,7 @@ bitbag_sylius_invoicing_plugin:
         street: Street
         city: City
         postcode: Postcode
+        country: Country
         vat_number: Vat number
         table:
             no: No.

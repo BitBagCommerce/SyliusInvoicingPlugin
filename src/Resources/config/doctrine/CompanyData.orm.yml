@@ -11,18 +11,28 @@ BitBag\SyliusInvoicingPlugin\Entity\CompanyData:
         name:
             column: name
             type: string
+            nullable: true
         street:
             column: street
             type: string
+            nullable: true
         city:
             column: city
             type: string
+            nullable: true
         postcode:
             column: postcode
             type: string
+            nullable: true
+        countryCode:
+            column: country_code
+            type: string
+            nullable: true
         vatNumber:
             column: vat_number
             type: string
+            nullable: true
         seller:
             column: seller
             type: string
+            nullable: true

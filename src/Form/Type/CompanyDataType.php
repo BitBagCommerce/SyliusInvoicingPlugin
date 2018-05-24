@@ -13,8 +13,11 @@ declare(strict_types=1);
 namespace BitBag\SyliusInvoicingPlugin\Form\Type;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Intl\Intl;
 
 final class CompanyDataType extends AbstractResourceType
 {
@@ -35,6 +38,9 @@ final class CompanyDataType extends AbstractResourceType
             ])
             ->add('postcode', TextType::class, [
                 'label' => 'bitbag_sylius_invoicing_plugin.ui.postcode',
+            ])
+            ->add('countryCode', CountryType::class, [
+                'label' => 'bitbag_sylius_invoicing_plugin.ui.country',
             ])
             ->add('vatNumber', TextType::class, [
                 'label' => 'bitbag_sylius_invoicing_plugin.ui.vat_number',

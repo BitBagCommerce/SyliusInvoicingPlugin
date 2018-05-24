@@ -59,6 +59,16 @@ interface CompanyDataInterface extends ResourceInterface
     public function setPostcode(?string $postcode): void;
 
     /**
+     * @return null|string
+     */
+    public function getCountryCode(): ?string;
+
+    /**
+     * @param null|string $countryCode
+     */
+    public function setCountryCode(?string $countryCode): void;
+
+    /**
      * @return string|null
      */
     public function getSeller(): ?string;
