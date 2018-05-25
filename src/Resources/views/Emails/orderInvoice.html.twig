@@ -1,3 +1,7 @@
+{% block subject %}
+    Your order invoice
+{% endblock %}
+
 {% block body %}
     Download your invoice for #{{ order.number }} by clicking
     <a href="{{ path('bitbag_sylius_invoicing_plugin_download_order_invoice', {'orderTokenValue': order.tokenValue}) }}">this link</a>.
