@@ -1,8 +1,8 @@
 imports:
-    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/services/form.yml" }
-    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/services/controller.yml" }
-    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/services/menu.yml" }
-    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/services/resolver.yml" }
+    - { resource: services/form.yml }
+    - { resource: services/controller.yml }
+    - { resource: services/menu.yml }
+    - { resource: services/resolver.yml }
 
 services:
     bitbag_sylius_invoicing_plugin.file_generator.invoice_filename:
