@@ -1,7 +1,8 @@
 imports:
-    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/services.yml" }
-    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/resources.yml" }
-    - { resource: "@BitBagSyliusInvoicingPlugin/Resources/config/grids.yml" }
+    - { resource: services.yml }
+    - { resource: resources.yml }
+    - { resource: grids.yml }
+    - { resource: state_machine.yml }
 
 parameters:
     wkhtmltopdf_binary_path: /usr/local/bin/wkhtmltopdf
