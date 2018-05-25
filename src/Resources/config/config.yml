@@ -6,10 +6,16 @@ imports:
 
 parameters:
     wkhtmltopdf_binary_path: /usr/local/bin/wkhtmltopdf
-    invoices_root_dir: "%kernel.root_dir%/../invoices"
+    invoices_root_dir: "%kernel.project_dir%/var/invoices"
 
 knp_snappy:
     pdf:
         enabled: true
         binary: "%wkhtmltopdf_binary_path%"
     process_timeout: 300
+
+sylius_mailer:
+    emails:
+        order_invoice:
+            subject: bitbag_sylius_invoicing_plugin.emails.order_invoice.subject
+            template: '@BitBagSyliusInvoicingPlugin/Emails/orderInvoice.html.twig'

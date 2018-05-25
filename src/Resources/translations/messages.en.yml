@@ -33,3 +33,7 @@ bitbag_sylius_invoicing_plugin:
             subtotal: Subtotal
             tax_total: Tax total
             total: Total
+
+    emails:
+        order_invoice:
+            subject: Your order invoice

@@ -27,4 +27,15 @@ final class InvoiceRepository extends EntityRepository implements InvoiceReposit
             ->getOneOrNullResult()
         ;
     }
+
+    public function findOneByTokenValue(string $tokenValue): ?InvoiceInterface
+    {
+        return $this->createQueryBuilder('o')
+            ->innerJoin('o.order', 'invoiceOrder')
+            ->where('invoiceOrder.tokenValue = :tokenValue')
+            ->setParameter('tokenValue', $tokenValue)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

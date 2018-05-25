@@ -26,10 +26,6 @@ final class DownloadInvoiceMenuBuilder
     /** @var InvoiceRepositoryInterface */
     private $companyDataResolver;
 
-    /**
-     * @param InvoiceRepositoryInterface $invoiceRepository
-     * @param CompanyDataResolverInterface $companyDataResolver
-     */
     public function __construct(
         InvoiceRepositoryInterface $invoiceRepository,
         CompanyDataResolverInterface $companyDataResolver
@@ -71,16 +67,12 @@ final class DownloadInvoiceMenuBuilder
         ;
     }
 
-    /**
-     * @param ItemInterface $menu
-     * @param OrderInterface $order
-     */
     private function addDownloadInvoiceMenuItem(ItemInterface $menu, OrderInterface $order): void
     {
         $menu
             ->addChild('download_invoice', [
-                'route' => 'bitbag_sylius_invoicing_plugin_admin_download_order_invoice',
-                'routeParameters' => ['orderId' => $order->getId()],
+                'route' => 'bitbag_sylius_invoicing_plugin_download_order_invoice',
+                'routeParameters' => ['orderTokenValue' => $order->getTokenValue()],
             ])
             ->setAttribute('type', 'link')
             ->setLabel('bitbag_sylius_invoicing_plugin.ui.download_invoice')

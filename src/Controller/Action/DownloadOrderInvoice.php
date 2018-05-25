@@ -33,9 +33,9 @@ final class DownloadOrderInvoice
         $this->invoiceFileResolver = $invoiceFileResolver;
     }
 
-    public function __invoke(int $orderId): BinaryFileResponse
+    public function __invoke(string $orderTokenValue): BinaryFileResponse
     {
-        $invoice = $this->invoiceRepository->findByOrderId($orderId);
+        $invoice = $this->invoiceRepository->findOneByTokenValue($orderTokenValue);
         $response = new BinaryFileResponse($this->invoiceFileResolver->resolveInvoicePath($invoice));
 
         $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT);

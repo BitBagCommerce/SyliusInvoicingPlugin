@@ -79,8 +79,7 @@ Import routing in your `app/config/routing.yml` file:
 ...
 
 bitbag_sylius_invoicing_plugin:
-    resource: "@BitBagSyliusInvoicingPlugin/Resources/config/routing.yml"
-    prefix: /admin
+    resource: '@BitBagSyliusInvoicingPlugin/Resources/config/routing.yml'
 ```
 
 Finish the installation by updating/migrating the database schema:
@@ -130,7 +129,7 @@ theme path, in case you are using multiple themes.
 ```yml
 parameters:
     wkhtmltopdf_binary_path: /usr/local/bin/wkhtmltopdf
-    invoices_root_dir: "%kernel.root_dir%/../invoices"
+    invoices_root_dir: "%kernel.project_dir%/var/invoices"
 ```
 
 ## Testing

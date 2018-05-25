@@ -1,0 +1,16 @@
+bitbag_sylius_invoicing_plugin_admin_company_data:
+    resource: |
+        alias: bitbag_sylius_invoicing_plugin.company_data
+        path: company-invoice-data
+        section: admin
+        templates: SyliusAdminBundle:Crud
+        except: ['show']
+        redirect: update
+        grid: bitbag_sylius_invoicing_plugin_company_data
+        permission: true
+        vars:
+          all:
+              subheader: bitbag_sylius_invoicing_plugin.ui.manage_company_invoice_data
+          index:
+              icon: share alternate
+    type: sylius.resource

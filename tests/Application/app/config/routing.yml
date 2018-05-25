@@ -4,5 +4,4 @@ sylius:
 # Put your own routes here
 
 bitbag_sylius_invoicing_plugin:
-    resource: "@BitBagSyliusInvoicingPlugin/Resources/config/routing.yml"
-    prefix: /admin
+    resource: '@BitBagSyliusInvoicingPlugin/Resources/config/routing.yml'
