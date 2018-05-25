@@ -17,33 +17,15 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 interface InvoiceInterface extends ResourceInterface
 {
-    /**
-     * @return string|null
-     */
     public function getVatNumber(): ?string;
 
-    /**
-     * @param string|null $vatNumber
-     */
     public function setVatNumber(?string $vatNumber): void;
 
-    /**
-     * @return OrderInterface
-     */
     public function getOrder(): OrderInterface;
 
-    /**
-     * @param OrderInterface $order
-     */
     public function setOrder(OrderInterface $order): void;
 
-    /**
-     * @return string|null
-     */
     public function getPath(): ?string;
 
-    /**
-     * @param string|null $path
-     */
     public function setPath(?string $path): void;
 }

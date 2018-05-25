@@ -17,22 +17,14 @@ use BitBag\SyliusInvoicingPlugin\Repository\CompanyDataRepositoryInterface;
 
 final class CompanyDataResolver implements CompanyDataResolverInterface
 {
-    /**
-     * @var CompanyDataRepositoryInterface
-     */
+    /** @var CompanyDataRepositoryInterface */
     private $companyDataRepository;
 
-    /**
-     * @param CompanyDataRepositoryInterface $companyDataRepository
-     */
     public function __construct(CompanyDataRepositoryInterface $companyDataRepository)
     {
         $this->companyDataRepository = $companyDataRepository;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function resolveCompanyData(): ?CompanyDataInterface
     {
         return $this->companyDataRepository->findCompanyData();

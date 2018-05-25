@@ -18,13 +18,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface CompanyDataRepositoryInterface extends RepositoryInterface
 {
-    /**
-     * @return QueryBuilder
-     */
     public function createListQueryBuilder(): QueryBuilder;
 
-    /**
-     * @return CompanyDataInterface|null
-     */
     public function findCompanyData(): ?CompanyDataInterface;
 }

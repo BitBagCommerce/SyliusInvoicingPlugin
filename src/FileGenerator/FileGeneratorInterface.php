@@ -16,15 +16,7 @@ use BitBag\SyliusInvoicingPlugin\Entity\InvoiceInterface;
 
 interface FileGeneratorInterface
 {
-    /**
-     * @param InvoiceInterface $invoice
-     *
-     * @return string
-     */
     public function generateFile(InvoiceInterface $invoice): string;
 
-    /**
-     * @return string
-     */
     public function getFilesDirectoryPath(): string;
 }

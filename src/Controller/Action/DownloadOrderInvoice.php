@@ -19,20 +19,12 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 
 final class DownloadOrderInvoice
 {
-    /**
-     * @var InvoiceRepositoryInterface
-     */
+    /** @var InvoiceRepositoryInterface */
     private $invoiceRepository;
 
-    /**
-     * @var InvoiceFileResolverInterface
-     */
+    /** @var InvoiceRepositoryInterface */
     private $invoiceFileResolver;
 
-    /**
-     * @param InvoiceRepositoryInterface $invoiceRepository
-     * @param InvoiceFileResolverInterface $invoiceFileResolver
-     */
     public function __construct(
         InvoiceRepositoryInterface $invoiceRepository,
         InvoiceFileResolverInterface $invoiceFileResolver
@@ -41,11 +33,6 @@ final class DownloadOrderInvoice
         $this->invoiceFileResolver = $invoiceFileResolver;
     }
 
-    /**
-     * @param int $orderId
-     *
-     * @return BinaryFileResponse
-     */
     public function __invoke(int $orderId): BinaryFileResponse
     {
         $invoice = $this->invoiceRepository->findByOrderId($orderId);

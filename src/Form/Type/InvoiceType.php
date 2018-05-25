@@ -18,9 +18,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 final class InvoiceType extends AbstractResourceType
 {
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('vatNumber', TextType::class, [

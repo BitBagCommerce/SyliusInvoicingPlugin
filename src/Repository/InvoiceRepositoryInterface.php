@@ -17,10 +17,5 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 interface InvoiceRepositoryInterface extends RepositoryInterface
 {
-    /**
-     * @param int|null $orderId
-     *
-     * @return InvoiceInterface|null
-     */
     public function findByOrderId(?int $orderId): ?InvoiceInterface;
 }

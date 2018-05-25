@@ -16,9 +16,6 @@ use BitBag\SyliusInvoicingPlugin\Entity\InvoiceInterface;
 
 final class InvoicePdfFilenameGenerator implements FilenameGeneratorInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function generateFilename(InvoiceInterface $invoice): string
     {
         $tokens = [

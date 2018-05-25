@@ -21,3 +21,9 @@ services:
         class: BitBag\SyliusInvoicingPlugin\Validator\Constraints\VatNumberValidator
         tags:
             - { name: validator.constraint_validator, alias: bitbag_sylius_invoicing_plugin_vat_number_validator }
+
+    bitbag_sylius_invoicing_plugin.email_manager.invoice:
+        class: BitBag\SyliusInvoicingPlugin\EmailManager\InvoiceEmailManager
+        arguments:
+            - "@sylius.email_sender"
+            - "@bitbag_sylius_invoicing_plugin.repository.invoice"

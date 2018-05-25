@@ -19,38 +19,21 @@ use Symfony\Component\Templating\EngineInterface;
 
 final class InvoicePdfFileGenerator implements FileGeneratorInterface
 {
-    /**
-     * @var FilenameGeneratorInterface
-     */
+    /** @var FilenameGeneratorInterface */
     private $filenameGenerator;
 
-    /**
-     * @var GeneratorInterface
-     */
+    /** @var FileGeneratorInterface */
     private $pdfFileGenerator;
 
-    /**
-     * @var EngineInterface
-     */
+    /** @var EngineInterface */
     private $templatingEngine;
 
-    /**
-     * @var CompanyDataResolverInterface
-     */
+    /** @var CompanyDataResolverInterface */
     private $companyDataResolver;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $filesPath;
 
-    /**
-     * @param GeneratorInterface $pdfFileGenerator
-     * @param EngineInterface $templatingEngine
-     * @param CompanyDataResolverInterface $companyDataResolver
-     * @param FilenameGeneratorInterface $filenameGenerator
-     * @param string $filesPath
-     */
     public function __construct(
         GeneratorInterface $pdfFileGenerator,
         EngineInterface $templatingEngine,
@@ -65,9 +48,6 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
         $this->filesPath = $filesPath;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function generateFile(InvoiceInterface $invoice): string
     {
         $html = $this->templatingEngine->render(
@@ -84,9 +64,6 @@ final class InvoicePdfFileGenerator implements FileGeneratorInterface
         return $filename;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFilesDirectoryPath(): string
     {
         return $this->filesPath;

@@ -16,22 +16,14 @@ use Symfony\Component\Validator\Constraint;
 
 final class VatNumber extends Constraint
 {
-    /**
-     * @var string
-     */
+    /** @var InvoiceRepositoryInterface */
     public $message = 'bitbag_sylius_invoicing_plugin.ui.invalid_vat_number';
 
-    /**
-     * {@inheritdoc}
-     */
     public function validatedBy(): string
     {
         return 'bitbag_sylius_invoicing_plugin_vat_number_validator';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getTargets(): string
     {
         return self::PROPERTY_CONSTRAINT;

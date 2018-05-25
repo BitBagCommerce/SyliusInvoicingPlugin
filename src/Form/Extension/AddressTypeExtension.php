@@ -24,20 +24,12 @@ use Symfony\Component\Form\FormEvents;
 
 final class AddressTypeExtension extends AbstractTypeExtension
 {
-    /**
-     * @var InvoiceRepositoryInterface
-     */
+    /** @var InvoiceRepositoryInterface */
     private $invoiceRepository;
 
-    /**
-     * @var EntityManagerInterface
-     */
+    /** @var EntityManagerInterface */
     private $invoiceEntityManager;
 
-    /**
-     * @param InvoiceRepositoryInterface $invoiceRepository
-     * @param EntityManagerInterface $invoiceEntityManager
-     */
     public function __construct(
         InvoiceRepositoryInterface $invoiceRepository,
         EntityManagerInterface $invoiceEntityManager
@@ -46,9 +38,6 @@ final class AddressTypeExtension extends AbstractTypeExtension
         $this->invoiceEntityManager = $invoiceEntityManager;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -95,9 +84,6 @@ final class AddressTypeExtension extends AbstractTypeExtension
         ;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getExtendedType(): string
     {
         return AddressType::class;

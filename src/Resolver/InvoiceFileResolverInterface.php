@@ -16,10 +16,5 @@ use BitBag\SyliusInvoicingPlugin\Entity\InvoiceInterface;
 
 interface InvoiceFileResolverInterface
 {
-    /**
-     * @param InvoiceInterface $invoice
-     *
-     * @return string
-     */
     public function resolveInvoicePath(InvoiceInterface $invoice): string;
 }

@@ -19,32 +19,18 @@ use Doctrine\ORM\EntityManagerInterface;
 
 final class InvoiceFileResolver implements InvoiceFileResolverInterface
 {
-    /**
-     * @var FileGeneratorInterface
-     */
+    /** @var InvoiceRepositoryInterface */
     private $invoiceFileGenerator;
 
-    /**
-     * @var InvoiceRepositoryInterface
-     */
+    /** @var InvoiceRepositoryInterface */
     private $invoiceRepository;
 
-    /**
-     * @var EntityManagerInterface
-     */
+    /** @var InvoiceRepositoryInterface */
     private $invoiceEntityManager;
 
-    /**
-     * @var string
-     */
+    /** @var InvoiceRepositoryInterface */
     private $environment;
 
-    /**
-     * @param FileGeneratorInterface $invoiceFileGenerator
-     * @param InvoiceRepositoryInterface $invoiceRepository
-     * @param EntityManagerInterface $invoiceEntityManager
-     * @param string $environment
-     */
     public function __construct(
         FileGeneratorInterface $invoiceFileGenerator,
         InvoiceRepositoryInterface $invoiceRepository,
@@ -57,9 +43,6 @@ final class InvoiceFileResolver implements InvoiceFileResolverInterface
         $this->environment = $environment;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function resolveInvoicePath(InvoiceInterface $invoice): string
     {
         if (null === $invoice->getPath() || (null !== $invoice->getPath() && 'prod' !== $this->environment)) {

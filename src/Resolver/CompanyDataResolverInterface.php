@@ -16,8 +16,5 @@ use BitBag\SyliusInvoicingPlugin\Entity\CompanyDataInterface;
 
 interface CompanyDataResolverInterface
 {
-    /**
-     * @return CompanyDataInterface|null
-     */
     public function resolveCompanyData(): ?CompanyDataInterface;
 }

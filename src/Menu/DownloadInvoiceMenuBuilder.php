@@ -20,14 +20,10 @@ use Sylius\Component\Core\Model\OrderInterface;
 
 final class DownloadInvoiceMenuBuilder
 {
-    /**
-     * @var InvoiceRepositoryInterface
-     */
+    /** @var InvoiceRepositoryInterface */
     private $invoiceRepository;
 
-    /**
-     * @var CompanyDataResolverInterface
-     */
+    /** @var InvoiceRepositoryInterface */
     private $companyDataResolver;
 
     /**
@@ -42,9 +38,6 @@ final class DownloadInvoiceMenuBuilder
         $this->companyDataResolver = $companyDataResolver;
     }
 
-    /**
-     * @param OrderShowMenuBuilderEvent $orderShowMenuBuilderEvent
-     */
     public function addItem(OrderShowMenuBuilderEvent $orderShowMenuBuilderEvent): void
     {
         /** @var OrderInterface $order */
@@ -65,9 +58,6 @@ final class DownloadInvoiceMenuBuilder
         $this->addDownloadInvoiceMenuItem($menu, $order);
     }
 
-    /**
-     * @param ItemInterface $menu
-     */
     private function addNoCompanyDataInfoMenuItem(ItemInterface $menu): void
     {
         $menu

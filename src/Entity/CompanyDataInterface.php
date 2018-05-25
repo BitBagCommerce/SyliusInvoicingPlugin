@@ -8,73 +8,31 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 
 interface CompanyDataInterface extends ResourceInterface
 {
-    /**
-     * @return string|null
-     */
     public function getName(): ?string;
 
-    /**
-     * @param string|null $name
-     */
     public function setName(?string $name): void;
 
-    /**
-     * @return string|null
-     */
     public function getVatNumber(): ?string;
 
-    /**
-     * @param string|null $vatNumber
-     */
     public function setVatNumber(?string $vatNumber): void;
 
-    /**
-     * @return string|null
-     */
     public function getStreet(): ?string;
 
-    /**
-     * @param string|null $street
-     */
     public function setStreet(?string $street): void;
 
-    /**
-     * @return string|null
-     */
     public function getCity(): ?string;
 
-    /**
-     * @param string|null $city
-     */
     public function setCity(?string $city): void;
 
-    /**
-     * @return string|null
-     */
     public function getPostcode(): ?string;
 
-    /**
-     * @param string|null $postcode
-     */
     public function setPostcode(?string $postcode): void;
 
-    /**
-     * @return null|string
-     */
     public function getCountryCode(): ?string;
 
-    /**
-     * @param null|string $countryCode
-     */
     public function setCountryCode(?string $countryCode): void;
 
-    /**
-     * @return string|null
-     */
     public function getSeller(): ?string;
 
-    /**
-     * @param string|null $seller
-     */
     public function setSeller(?string $seller): void;
 }

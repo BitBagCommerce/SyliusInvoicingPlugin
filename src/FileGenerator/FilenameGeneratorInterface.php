@@ -16,10 +16,5 @@ use BitBag\SyliusInvoicingPlugin\Entity\InvoiceInterface;
 
 interface FilenameGeneratorInterface
 {
-    /**
-     * @param InvoiceInterface $invoice
-     *
-     * @return string
-     */
     public function generateFilename(InvoiceInterface $invoice): string;
 }

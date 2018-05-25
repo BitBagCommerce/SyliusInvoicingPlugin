@@ -17,9 +17,6 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 final class InvoiceRepository extends EntityRepository implements InvoiceRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function findByOrderId(?int $orderId): ?InvoiceInterface
     {
         return $this->createQueryBuilder('o')

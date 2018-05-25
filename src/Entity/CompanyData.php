@@ -14,161 +14,100 @@ namespace BitBag\SyliusInvoicingPlugin\Entity;
 
 class CompanyData implements CompanyDataInterface
 {
-    /**
-     * @var int
-     */
+    /** @var int */
     protected $id;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $name;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $vatNumber;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $street;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $city;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $postcode;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $countryCode;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     protected $seller;
 
-    /**
-     * {@inheritdoc}
-     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getVatNumber(): ?string
     {
         return $this->vatNumber;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setVatNumber(?string $vatNumber): void
     {
         $this->vatNumber = $vatNumber;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setName(?string $name): void
     {
         $this->name = $name;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getStreet(): ?string
     {
         return $this->street;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setStreet(?string $street): void
     {
         $this->street = $street;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCity(): ?string
     {
         return $this->city;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCity(?string $city): void
     {
         $this->city = $city;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPostcode(): ?string
     {
         return $this->postcode;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setPostcode(?string $postcode): void
     {
         $this->postcode = $postcode;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCountryCode(): ?string
     {
         return $this->countryCode;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setCountryCode(?string $countryCode): void
     {
         $this->countryCode = $countryCode;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSeller(): ?string
     {
         return $this->seller;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setSeller(?string $seller): void
     {
         $this->seller = $seller;

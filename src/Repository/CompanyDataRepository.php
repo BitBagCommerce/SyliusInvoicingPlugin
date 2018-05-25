@@ -18,17 +18,11 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 
 final class CompanyDataRepository extends EntityRepository implements CompanyDataRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o');
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function findCompanyData(): ?CompanyDataInterface
     {
         return $this->createQueryBuilder('o')

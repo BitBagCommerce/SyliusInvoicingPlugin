@@ -1,0 +1,8 @@
+winzou_state_machine:
+    sylius_payment:
+        callbacks:
+            before:
+                bitbag_invoicing_send_invoice_email:
+                    on: ["complete"]
+                    do: ["@bitbag_sylius_invoicing_plugin.email_manager.invoice", "sendInvoiceEmail"]
+                    args: ["object"]
