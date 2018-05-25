@@ -3,7 +3,7 @@
 {% endblock %}
 
 {% block body %}
-    {% set url = channel.hostname is not null ? 'http://' ~ channel.hostname ~ path('bitbag_sylius_invoicing_plugin_download_order_invoice', {'orderTokenValue': order.tokenValue}) : url('bitbag_sylius_invoicing_plugin_download_order_invoice', {'orderTokenValue': order.tokenValue}) %}
+    {% set url = order.channel.hostname is not null ? 'http://' ~ order.channel.hostname ~ path('bitbag_sylius_invoicing_plugin_download_order_invoice', {'orderTokenValue': order.tokenValue}) : url('bitbag_sylius_invoicing_plugin_download_order_invoice', {'orderTokenValue': order.tokenValue}) %}
 
     Download your invoice for #{{ order.number }} by clicking
     <a href="{{ url }}">this link</a>.
