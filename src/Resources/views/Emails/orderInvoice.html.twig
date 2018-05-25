@@ -3,8 +3,10 @@
 {% endblock %}
 
 {% block body %}
+    {% set url = channel.hostname is not null ? 'http://' ~ channel.hostname ~ path('bitbag_sylius_invoicing_plugin_download_order_invoice', {'orderTokenValue': order.tokenValue}) : url('bitbag_sylius_invoicing_plugin_download_order_invoice', {'orderTokenValue': order.tokenValue}) %}
+
     Download your invoice for #{{ order.number }} by clicking
-    <a href="{{ path('bitbag_sylius_invoicing_plugin_download_order_invoice', {'orderTokenValue': order.tokenValue}) }}">this link</a>.
+    <a href="{{ url }}">this link</a>.
 
     <br/><br/>
 
