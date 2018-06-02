@@ -11,6 +11,7 @@ BitBag\SyliusInvoicingPlugin\Entity\Invoice:
         vatNumber:
             column: vat_number
             type: string
+            nullable: true
         path:
             column: path
             type: string
