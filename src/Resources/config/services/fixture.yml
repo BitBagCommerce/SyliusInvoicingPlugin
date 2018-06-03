@@ -1,0 +1,13 @@
+services:
+    bitbag_sylius_invoicing_plugin.fixture.company_data:
+        class: BitBag\SyliusInvoicingPlugin\Fixture\CompanyDataFixture
+        arguments:
+            - "@bitbag_sylius_invoicing_plugin.fixture.factory.company_data"
+        tags:
+            - { name: sylius_fixtures.fixture }
+
+    bitbag_sylius_invoicing_plugin.fixture.factory.company_data:
+        class: BitBag\SyliusInvoicingPlugin\Fixture\Factory\CompanyDataFixtureFactory
+        arguments:
+            - "@bitbag_sylius_invoicing_plugin.factory.company_data"
+            - "@bitbag_sylius_invoicing_plugin.repository.company_data"
