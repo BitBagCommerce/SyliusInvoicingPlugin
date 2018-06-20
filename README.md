@@ -38,7 +38,7 @@ The admin can be accessed under [demo.bitbag.shop/admin](https://demo.bitbag.sho
 
 ## Installation
 ```bash
-$ composer require bitbag/invoicing-plugin
+$ composer require bitbag/invoicing-plugin:dev-master
 ```
     
 Add plugin dependencies to your AppKernel.php file:
