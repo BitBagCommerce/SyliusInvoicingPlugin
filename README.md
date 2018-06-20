@@ -89,14 +89,17 @@ $ bin/console doctrine:schema:update --force
 
 ## Usage
 
-In your admin panel, add the company data. So far, only single company data is supported. 
-
 To see what templates you need to override in order to enable this plugin on your storefront, browse Twig files from 
 `/tests/Application/app/Resources/SyliusShopBundle` path of this plugin. 
 
 To override the invoice template, override the `invoice.html.twig` file of this plugin, which you should 
 do in `app/Resources/BitBagSyliusInvoicingPlugin/views/invoice.html.twig` file of your local project or in the
 theme path, in case you are using multiple themes. 
+
+In your admin panel, add the company data. So far, only single company data is supported. 
+
+In order to see the ability to download invoice, in the checkout, confirm a billing address and fill the VAT number. Make sure you customized your local SyliusShopBundle templates like described above. 
+Then, in the admin panel, you should see a button to download the invoice for an order, which has the billing address with VAT number fulfilled (which in your case, shoul be the last one).
 
 ## Customization
 
